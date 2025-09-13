@@ -491,7 +491,7 @@
             .pacote-section { grid-template-columns: 1fr 1fr; }
         }
     </style>
-</head>
+<style type="text/css" id="operaUserStyle"></style></head>
 <body>
 
     <div class="container">
@@ -545,7 +545,7 @@
                                         <div class="rate-item"><div class="rate-label">💲 <span>5k+</span></div><div class="rate-value">R$<span id="rate5k">29.00</span></div></div>
                                         <div class="rate-item"><div class="rate-label">💲 <span>10k+</span></div><div class="rate-value">R$<span id="rate10k">27.00</span></div></div>
                                         <div class="rate-item"><div class="rate-label">💲 <span>20k+</span></div><div class="rate-value">R$<span id="rate20k">24.50</span></div></div>
-                                        <div class="rate-item"><div class="rate-label">💲 <span>Valor 1k em $</span></div><div class="rate-value">$<span id="rateDollar">4.70</span></div></div>
+                                        <div class="rate-item"><div class="rate-label">💲 <span>Valor 1k em $</span></div><div class="rate-value">$<span id="rateDollar">4.55</span></div></div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputReal">Converter R$ para Gold:</label>
@@ -738,144 +738,14 @@
     <div class="volume-slider" id="volumeSlider"><span class="volume-label">Volume:</span><input type="range" min="0" max="100" value="70" id="volumeRange"></div>
 
     <div id="editPanel" class="">
-        <div class="edit-header" id="editHeader">Editar Informações</div>
-        <div id="editContent"><h3>Vendedores</h3><div id="vendorsEdit"><div class="vendor-edit">
-            <input type="text" placeholder="Nome" value="Conde">
-            <input type="text" placeholder="Servidor" value=" SA">
-            <button class="btn-remove" onclick="this.parentElement.remove()">X</button>
-        </div><div class="vendor-edit">
-            <input type="text" placeholder="Nome" value="">
-            <input type="text" placeholder="Servidor" value="">
-            <button class="btn-remove" onclick="this.parentElement.remove()">X</button>
-        </div><div class="vendor-edit">
-            <input type="text" placeholder="Nome" value="">
-            <input type="text" placeholder="Servidor" value="">
-            <button class="btn-remove" onclick="this.parentElement.remove()">X</button>
-        </div><div class="vendor-edit">
-            <input type="text" placeholder="Nome" value="">
-            <input type="text" placeholder="Servidor" value="">
-            <button class="btn-remove" onclick="this.parentElement.remove()">X</button>
-        </div></div><button class="btn" onclick="addVendorEdit(-1, '', '')">Adicionar Vendedor</button><br><br><h3>Informações Gerais (Texto Simples)</h3><textarea id="editInfoGerais" rows="15" style="width: 100%;">Fornecedores de Packs
-
-
-
-
-Pack de 100$: Dog (proibido packs de 10$ e 50$, passe e pack de 30$ permitido)
-
-
-
-
-
-Pack de 50$: Daodao (pode enviar pedidos em geral, mas é mais caro)
-
-
-
-
-
-Outros Packs: Sombra (pedidos que não são de 100$ ou 50$)
-
-
-
-
-
-(NC e ROM continuam como antes.)
-
-
-
-
-
-
-
-
-
-
----
-
-
-
-
-
-
-Compra de Gold
-
-
-
-
-Compramos gold por: 23,50 reais // 4.39$
-
-
-
-
-
-
-
-
-
-
----
-
-
-
-
-
-
-Como funciona o Intermédio?
-
-
-
-
-Eu seguro o dinheiro, auxilio na mudança dos dados/transferência e libero o dinheiro quando tudo estiver ok.
-
-
-
-
-
-
-G-mail: Dinheiro liberado após 7 dias.
-
-
-
-
-
-NFT: Dinheiro liberado na hora.
-
-
-
-
-
-
-Valores:
-
-
-
-
-
-
-4% para Wallet
-
-
-
-
-
-8% para Gmail
-
-
-
-
-
-Valor mínimo da transação: 35 reais
-
-
-
-
-
-
-
-
-
-
-
----</textarea></div>
+        <div class="edit-header" id="editHeader">Editar Taxas de Gold</div>
+        <div id="editContent">
+                <div class="form-group"><label>1k+ (R$)</label><input type="number" step="0.01" id="editBase" value="33"></div>
+                <div class="form-group"><label>5k+ (R$)</label><input type="number" step="0.01" id="editAbove5k" value="30"></div>
+                <div class="form-group"><label>10k+ (R$)</label><input type="number" step="0.01" id="editAbove10k" value="28"></div>
+                <div class="form-group"><label>20k+ (R$)</label><input type="number" step="0.01" id="editAbove20k" value="25"></div>
+                <div class="form-group"><label>USDT ($)</label><input type="number" step="0.01" id="editUsdt" value="4.7"></div>
+            </div>
         <div class="edit-footer">
             <button id="saveBtn" class="btn" onclick="saveChanges(event)">Salvar e Baixar</button>
         </div>
@@ -889,11 +759,11 @@ Valor mínimo da transação: 35 reais
     "defaultExchangeRate": 5.88,
     "cardFeePercentage": 0.06,
     "goldRates": {
-        "base": 33,
-        "above5k": 30,
-        "above10k": 28,
-        "above20k": 25,
-        "usdt": 4.7
+        "base": 32,
+        "above5k": 29,
+        "above10k": 27,
+        "above20k": 24.5,
+        "usdt": 4.55
     },
     "basePackagePrices": {
         "1": 0.9,
@@ -1709,5 +1579,6 @@ Valor mínimo da transação: 35 reais
         return html;
     }
 </script>
+
 
 </body></html>
