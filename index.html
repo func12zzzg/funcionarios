@@ -1,0 +1,1612 @@
+<html lang="pt-BR"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja Daoshi - Gold &amp; Packs</title>
+    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1lLnjQ3NYt6Bd6WapJ2p0EjzfQJIbB-es">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #7e57c2;
+            --secondary-color: #5e35b1;
+            --accent-color: #b39ddb;
+            --gold-color: #ffd700;
+            --gold-dark: #d4af37;
+            --text-color: #f5f5f5;
+            --panel-bg: rgba(94, 53, 177, 0.25);
+            --panel-border: rgba(255, 215, 0, 0.3);
+            --input-bg: rgba(255, 255, 255, 0.1);
+            --input-border: rgba(255, 215, 0, 0.5);
+            --button-primary: linear-gradient(135deg, #9c27b0, #673ab7);
+            --button-hover: linear-gradient(135deg, #673ab7, #9c27b0);
+            --button-active: linear-gradient(135deg, #512da8, #7b1fa2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        
+        body {
+            background-image: url('https://lh3.googleusercontent.com/d/1ECtr_z7YWp_QugVyvTQBWTiV9d88m5zS');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(20,20,30,0.8) 100%);
+            z-index: -1;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex-grow: 1;
+        }
+        
+        header {
+            text-align: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            background: linear-gradient(to right, var(--gold-color), #ffffff, var(--gold-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            color: var(--accent-color);
+            font-weight: 300;
+        }
+        
+        .cotacao-display {
+            margin-top: 10px;
+            background: rgba(0,0,0,0.5);
+            padding: 8px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            border: 1px solid var(--gold-color);
+            box-shadow: 0 0 10px rgba(255,215,0,0.3);
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .cotacao-display .icon { margin-right: 8px; color: var(--gold-color); }
+        .cotacao-display .value { font-weight: 600; color: var(--gold-color); }
+
+        .main-layout {
+            display: flex;
+            gap: 20px;
+            flex-grow: 1;
+        }
+
+        .left-column {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .right-column {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 15px 40px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid var(--panel-border);
+            background: rgba(0,0,0,0.3);
+            color: var(--accent-color);
+            border-radius: 10px 10px 0 0;
+            border-bottom: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-button.active {
+            background: var(--panel-bg);
+            color: var(--gold-color);
+            border-color: var(--gold-color);
+            transform: translateY(2px);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 0 0 25px rgba(255, 215, 0, 0.4);
+        }
+
+        @keyframes shimmer-effect {
+            0% { transform: translateX(-150%) skewX(-30deg); }
+            100% { transform: translateX(150%) skewX(-30deg); }
+        }
+
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
+            animation: shimmer-effect 2.5s infinite linear;
+        }
+        
+        .tab-content {
+            flex-grow: 1;
+            margin-top: -12px;
+        }
+        
+        .tab-pane {
+            height: 100%;
+            display: none;
+        }
+        .tab-pane.active {
+            display: block;
+        }
+        
+        .panel {
+            background: var(--panel-bg);
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3), 0 5px 15px rgba(0,0,0,0.2);
+            border: 1px solid var(--panel-border);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            animation: fadeIn 0.6s ease forwards;
+            height: auto;
+        }
+        
+        .tab-content .panel {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        
+        .panel-content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr; /* MODIFICADO */
+            gap: 20px;
+        }
+
+        .login-section {
+            grid-column: 2;
+        }
+
+        .panel-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            color: var(--gold-color);
+            display: inline-block;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: var(--gold-color);
+        }
+        
+        h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            text-align: center;
+            border-bottom: 1px solid var(--panel-border);
+            padding-bottom: 8px;
+        }
+        
+        .form-group { margin-bottom: 15px; }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+        
+        input[type="number"], input[type="text"], textarea {
+            width: 100%;
+            padding: 10px 12px;
+            background: var(--input-bg);
+            color: var(--text-color);
+            border: 1px solid var(--input-border);
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        input[type="number"]:focus, input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: var(--gold-color);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
+        }
+        
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        input[type="number"] { -moz-appearance: textfield; }
+        
+        .result-group {
+            margin: 15px 0;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            border-left: 4px solid var(--gold-color);
+        }
+        
+        .result-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 0.95rem; }
+        .result-item:last-child { margin-bottom: 0; }
+        .result-label { font-weight: 500; }
+        .result-value { font-weight: 700; color: var(--gold-color); }
+        .result-value small { font-size: 0.8em; opacity: 0.8; }
+        
+        .pacote-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; background: var(--button-primary); color: white; border: none; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2); position: relative; overflow: hidden; width: 100%; }
+        .btn:hover { background: var(--button-hover); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.25); }
+        .btn:active { background: var(--button-active); transform: translateY(0); box-shadow: 0 2px 4px rgba(0,0,0,0.15); }
+        .btn svg { width: 16px; height: 16px; margin-right: 8px; }
+        
+        .details-toggle { margin-top: 20px; }
+        .details-toggle summary { cursor: pointer; font-family: 'Cinzel', serif; font-size: 1rem; text-align: center; color: var(--accent-color); padding: 8px; border-radius: 8px; background: rgba(0,0,0,0.2); }
+        .details-toggle summary:hover { color: var(--gold-color); }
+        .details-content { margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--panel-border); }
+
+        .rates-grid { display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 20px; }
+        .rate-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; background: rgba(0,0,0,0.2); border-radius: 6px; font-size: 0.9rem; }
+        .rate-label span { margin-left: 4px; }
+        .rate-value { font-weight: 600; color: var(--gold-color); }
+        
+        .calc-result-container { display: flex; align-items: center; gap: 10px; }
+        .calc-result { text-align: center; font-size: 1rem; font-weight: 600; color: var(--gold-color); margin-top: 5px; padding: 8px; background: rgba(0, 0, 0, 0.2); border-radius: 8px; animation: pulse 2.5s infinite; flex-grow: 1; }
+        .send-to-gold-btn { background: var(--button-primary); border: none; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: bold; cursor: pointer; flex-shrink: 0; transition: all 0.2s ease; }
+        .send-to-gold-btn:hover { background: var(--button-hover); transform: scale(1.1); }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+        }
+        
+        .summary-and-payment { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+        .payment-methods { display: flex; flex-direction: column; gap: 15px; }
+        .payment-method { padding: 15px; background: rgba(0, 0, 0, 0.2); border-radius: 12px; border-left: 4px solid var(--gold-color); position: relative; }
+        .payment-method-title { display: flex; align-items: center; font-size: 1.1rem; margin-bottom: 10px; color: var(--accent-color); }
+        .payment-method-title span { margin-left: 8px; }
+        .payment-details { font-size: 0.95rem; }
+        .payment-details strong { color: var(--gold-color); }
+        .copy-payment-btn { position: absolute; top: 12px; right: 12px; background: var(--button-primary); border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .copy-payment-btn:hover { background: var(--button-hover); transform: scale(1.1); }
+        .copy-payment-btn svg { width: 15px; height: 15px; fill: none; stroke: white; stroke-width: 2; }
+        
+        .total-grand { font-size: 1.2rem; font-weight: 700; margin-bottom: 15px; text-align: center; color: var(--gold-color); text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .total-grand span { display: block; margin-top: 5px; font-size: 1.5rem; }
+        .total-grand span small { font-size: 0.7em; opacity: 0.8; }
+
+        .tooltip { position: fixed; background: rgba(0,0,0,0.9); color: white; padding: 10px 15px; border-radius: 8px; font-size: 0.9rem; z-index: 1000; pointer-events: none; opacity: 0; transition: opacity 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        
+        .gross-gold-display { font-size: 0.8rem; color: var(--accent-color); text-align: right; margin-top: -10px; padding-right: 5px; height: 16px; }
+        .invisible-button { position: absolute; top: 15px; left: 15px; width: 25px; height: 25px; background: transparent; border: none; cursor: pointer; z-index: 10; padding: 0; display: flex; align-items: center; justify-content: center; font-size: 0; }
+        .invisible-button::after { content: "🌸"; font-size: 16px; opacity: 0.5; transition: opacity 0.3s, transform 0.2s; }
+        .invisible-button:hover::after { opacity: 1; transform: scale(1.2); }
+        
+        .sound-control { position: fixed; bottom: 15px; right: 15px; background: rgba(0,0,0,0.7); padding: 8px; border-radius: 50%; cursor: pointer; z-index: 1000; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 8px rgba(0,0,0,0.3); border: 1px solid var(--panel-border); }
+        .sound-icon { width: 20px; height: 20px; fill: var(--text-color); }
+        .muted .sound-icon .wave { opacity: 0.3; }
+        .muted .sound-icon .line { opacity: 1; }
+        .volume-slider { position: fixed; bottom: 15px; right: 60px; background: rgba(0,0,0,0.7); padding: 8px 12px; border-radius: 15px; z-index: 1000; display: flex; align-items: center; box-shadow: 0 4px 8px rgba(0,0,0,0.3); border: 1px solid var(--panel-border); transform: translateX(150px); opacity: 0; transition: transform 0.3s, opacity 0.3s; }
+        .volume-slider.active { transform: translateX(0); opacity: 1; }
+        .volume-slider input { width: 80px; margin: 0 8px; }
+        .volume-label { color: var(--text-color); font-size: 0.75rem; margin-right: 4px; }
+        
+        .supplier-section { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--panel-border); }
+        .supplier-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; font-size: 0.9rem; }
+        .supplier-table th, .supplier-table td { padding: 8px; text-align: center; border: 1px solid var(--panel-border); vertical-align: middle; }
+        .supplier-table th { background-color: rgba(0,0,0,0.3); color: var(--accent-color); font-family: 'Cinzel', serif; }
+        .supplier-table td small { font-size: 0.8em; opacity: 0.8; color: var(--accent-color); display: block; }
+        .supplier-recommendation { text-align: center; padding: 12px; background: rgba(0,0,0,0.3); border-radius: 8px; border: 1px solid var(--gold-color); min-height: 70px; }
+        .supplier-recommendation-label { font-size: 1rem; color: var(--accent-color); display: block; margin-bottom: 5px; }
+        .supplier-recommendation-value { font-weight: 700; color: var(--gold-color); font-family: 'Cinzel', serif; white-space: pre-wrap; }
+        .recommendation-simple { font-size: 1.4rem; animation: pulse 2s infinite; }
+        .recommendation-split { font-size: 1rem; text-align: left; line-height: 1.6; animation: none; }
+        .recommendation-split-summary { font-size: 0.8rem; font-family: 'Montserrat', sans-serif; font-weight: 400; color: var(--accent-color); margin-bottom: 8px; border-bottom: 1px solid var(--panel-border); padding-bottom: 8px; }
+
+        .vendedores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .vendedor-item {
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--gold-color);
+        }
+        .vendedor-item p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        .vendedor-item strong {
+            color: var(--accent-color);
+        }
+        .info-content-container p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        .info-content-container ul {
+            list-style-position: inside;
+            padding-left: 10px;
+            margin-bottom: 10px;
+        }
+        .info-content-container li {
+            margin-bottom: 5px;
+        }
+        .info-content-container a {
+            color: var(--gold-color);
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .info-content-container a:hover {
+            text-decoration: underline;
+        }
+        .info-content-container h3 {
+            text-align: left;
+        }
+        .info-content-container h3 i {
+            margin-right: 8px;
+            color: var(--gold-color);
+        }
+
+        #editPanel {
+            position: fixed;
+            bottom: 15px;
+            left: 15px;
+            width: clamp(300px, 90vw, 450px);
+            max-height: calc(100vh - 80px); /* Ajustado para caber o botão Salvar */
+            display: none;
+            flex-direction: column;
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 15px;
+            z-index: 1001;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+        #editPanel.active {
+            display: flex;
+        }
+        #editPanel .edit-header {
+            padding: 10px 15px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--gold-color);
+            border-bottom: 1px solid var(--panel-border);
+            text-align: center;
+        }
+        #editContent {
+            padding: 15px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+        #editPanel .form-group {
+            margin-bottom: 10px;
+        }
+        .edit-footer {
+            padding: 10px 15px;
+            border-top: 1px solid var(--panel-border);
+            display: flex;
+            justify-content: flex-end;
+        }
+        #saveBtn {
+            padding: 8px 20px;
+            width: auto;
+            font-size: 0.9rem;
+        }
+        .vendor-edit {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        .vendor-edit input {
+            flex: 1;
+            font-size: 0.9rem;
+        }
+        .vendor-edit .btn-remove {
+            background: #c0392b;
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 1024px) {
+            .main-layout { flex-direction: column; }
+            .panel-content-wrapper, .summary-and-payment { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            header h1 { font-size: 1.8rem; }
+            .tab-button { font-size: 1rem; padding: 10px 15px; }
+            .panel { padding: 15px; }
+            .pacote-section { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Daoshi Store</h1>
+            <p>Calculadora de Gold &amp; Packs</p>
+            <div class="cotacao-display">
+                <span class="icon">💱</span>
+                <span id="cotacao">Cotação USDT/BRL: <span class="value">R$5.38</span></span>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <div class="left-column">
+                <div class="tab-buttons">
+                    <button class="tab-button active" onclick="showTab('gold')">☀️ Gold</button>
+                    <button class="tab-button" onclick="showTab('packs')">💮 Packs</button>
+                    <button class="tab-button" onclick="showTab('info')">ℹ️ Informações</button>
+                </div>
+                <div class="tab-content">
+                    <div id="goldTab" class="tab-pane active">
+                        <div class="panel">
+                            <div class="form-group">
+                                <label for="quantidadeOuro">Passo 1: Digite a quantidade de Ouro desejada</label>
+                                <input type="number" id="quantidadeOuro" value="0" oninput="updateAllCalculations()">
+                                <div class="gross-gold-display" id="grossGoldDisplay"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="servidor">Passo 2: Informe o servidor</label>
+                                <input type="text" id="servidor" placeholder="Insira o nome do servidor" value="">
+                            </div>
+                            <div class="result-group">
+                                <div class="result-item">
+                                    <div class="result-label">Total em R$:</div>
+                                    <div class="result-value">R$<span id="totalROuro">0.00</span></div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">Total em $:</div>
+                                    <div class="result-value">$<span id="totalDOuro">0.00</span></div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">Quantidade a anunciar:</div>
+                                    <div class="result-value"><span id="quantidadeAnunciada">0</span></div>
+                                </div>
+                            </div>
+                            <details class="details-toggle">
+                                <summary>Ver taxas e conversão rápida</summary>
+                                <div class="details-content">
+                                    <div class="rates-grid">
+                                        <div class="rate-item"><div class="rate-label"><button id="editModeBtn" style="background: none; border: none; padding: 0; font-size: inherit; cursor: pointer; color: inherit;">💲</button> <span>1k+</span></div><div class="rate-value">R$<span id="rate1k">33.00</span></div></div>
+                                        <div class="rate-item"><div class="rate-label">💲 <span>5k+</span></div><div class="rate-value">R$<span id="rate5k">30.00</span></div></div>
+                                        <div class="rate-item"><div class="rate-label">💲 <span>10k+</span></div><div class="rate-value">R$<span id="rate10k">28.00</span></div></div>
+                                        <div class="rate-item"><div class="rate-label">💲 <span>20k+</span></div><div class="rate-value">R$<span id="rate20k">25.00</span></div></div>
+                                        <div class="rate-item"><div class="rate-label">💲 <span>Valor 1k em $</span></div><div class="rate-value">$<span id="rateDollar">4.70</span></div></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputReal">Converter R$ para Gold:</label>
+                                        <div class="calc-result-container">
+                                            <input type="number" id="inputReal" value="0" oninput="calculateGoldFromReal()">
+                                            <button class="send-to-gold-btn" onclick="sendToGold('real', event)" title="Enviar para o cálculo de Ouro">➔</button>
+                                        </div>
+                                        <div class="calc-result" id="resultadoReal">≈0 Gold</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputDollar">Converter USDT para Gold:</label>
+                                        <div class="calc-result-container">
+                                            <input type="number" id="inputDollar" value="0" oninput="calculateGoldFromDollar()">
+                                            <button class="send-to-gold-btn" onclick="sendToGold('dollar', event)" title="Enviar para o cálculo de Ouro">➔</button>
+                                        </div>
+                                        <div class="calc-result" id="resultadoDollar">≈0 Gold</div>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                    <div id="packsTab" class="tab-pane">
+                        <div class="panel">
+                            <div class="panel-content-wrapper">
+                                <div>
+                                    <h3>Passo 1: Selecione os Pacotes</h3>
+                                    <div class="pacote-section">
+                                        <div class="form-group"><label for="pacote1">$1</label><input type="number" id="pacote1" value="0" min="0" oninput="updatePacoteQuantidades(1, this.value);"></div>
+                                        <div class="form-group"><label for="pacote3">$3</label><input type="number" id="pacote3" value="0" min="0" oninput="updatePacoteQuantidades(3, this.value);"></div>
+                                        <div class="form-group"><label for="pacote5">$5</label><input type="number" id="pacote5" value="0" min="0" oninput="updatePacoteQuantidades(5, this.value);"></div>
+                                        <div class="form-group"><label for="pacote10">$10 Packs</label><input type="number" id="pacote10" value="0" min="0" oninput="updatePacoteQuantidades('10', this.value);"></div>
+                                        <div class="form-group"><label for="pacote10-passes">$10 Passes</label><input type="number" id="pacote10-passes" value="0" min="0" oninput="updatePacoteQuantidades('10-passes', this.value);"></div>
+                                        <div class="form-group"><label for="pacote30">$30</label><input type="number" id="pacote30" value="0" min="0" oninput="updatePacoteQuantidades(30, this.value);"></div>
+                                        <div class="form-group"><label for="pacote50">$50</label><input type="number" id="pacote50" value="0" min="0" oninput="updatePacoteQuantidades(50, this.value);"></div>
+                                        <div class="form-group"><label for="pacote100">$100</label><input type="number" id="pacote100" value="0" min="0" oninput="updatePacoteQuantidades(100, this.value);"></div>
+                                    </div>
+                                    
+                                    <div class="supplier-section">
+                                        <h3>Passo 2: Análise de Fornecedor</h3>
+                                        <p style="text-align: center; font-size: 0.9rem; margin-bottom: 10px; color: var(--accent-color);">Compare os custos e veja qual fornecedor é o mais vantajoso para o seu pedido.</p>
+                                        <table class="supplier-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Fornecedor</th>
+                                                    <th>Custo (R$)</th>
+                                                    <th>Custo ($)</th>
+                                                    <th>Lucro</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr><td>Sombra</td><td id="sombraCost">R$ 0.00</td><td id="sombraCostUsd">$ 0.00</td><td id="sombraLucro">R$ 0.00<small>$ 0.00</small></td></tr>
+                                                <tr><td>Daodao</td><td id="daodaoCost">R$ 0.00</td><td id="daodaoCostUsd">$ 0.00</td><td id="daodaoLucro">R$ 0.00<small>$ 0.00</small></td></tr>
+                                                <tr><td>Dog</td><td id="dogCost">R$ 0.00</td><td id="dogCostUsd">$ 0.00</td><td id="dogLucro">R$ 0.00<small>$ 0.00</small></td></tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="supplier-recommendation">
+                                            <span class="supplier-recommendation-label" id="recommendationTitle">Melhor enviar para:</span>
+                                            <div class="supplier-recommendation-value recommendation-simple" id="bestSupplier">N/A</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div id="infoTab" class="tab-pane">
+                         <div class="panel">
+                             <h3><i class="fas fa-users"></i> Vendedores de Gold</h3>
+                             <div id="vendedores-list" class="vendedores-grid"><div class="vendedor-item"><p><strong>Nome:</strong> Conde</p><p><strong>Servidor:</strong>  SA</p></div></div>
+                            
+                             <div id="info-content" class="info-content-container"><p>Fornecedores de Packs</p>
+
+
+
+<p>Pack de 100$: Dog (proibido packs de 10$ e 50$, passe e pack de 30$ permitido)</p>
+
+
+
+
+<p>Pack de 50$: Daodao (pode enviar pedidos em geral, mas é mais caro)</p>
+
+
+
+
+<p>Outros Packs: Sombra (pedidos que não são de 100$ ou 50$)</p>
+
+
+
+
+<p>(NC e ROM continuam como antes.)</p>
+
+
+
+
+
+
+
+
+<hr style="border-color: var(--panel-border); margin: 15px 0;">
+
+
+
+
+
+<p>Compra de Gold</p>
+
+
+
+<p>Compramos gold por: 23,50 reais // 4.39$</p>
+
+
+
+
+
+
+
+
+<hr style="border-color: var(--panel-border); margin: 15px 0;">
+
+
+
+
+
+<p>Como funciona o Intermédio?</p>
+
+
+
+<p>Eu seguro o dinheiro, auxilio na mudança dos dados/transferência e libero o dinheiro quando tudo estiver ok.</p>
+
+
+
+
+
+<p>G-mail: Dinheiro liberado após 7 dias.</p>
+
+
+
+
+<p>NFT: Dinheiro liberado na hora.</p>
+
+
+
+
+
+<p>Valores:</p>
+
+
+
+
+
+<p>4% para Wallet</p>
+
+
+
+
+<p>8% para Gmail</p>
+
+
+
+
+<p>Valor mínimo da transação: 35 reais</p>
+
+
+
+
+
+
+
+
+
+<hr style="border-color: var(--panel-border); margin: 15px 0;"></div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>🌸 Resumo e Pagamento 🌸</h2>
+                    </div>
+                    <div class="summary-and-payment">
+                        <div class="summary">
+                            <h3>Resumo do Pedido</h3>
+                            <div class="result-group">
+                                <div class="result-item">
+                                    <div class="result-label">Total Gold:</div>
+                                    <div class="result-value" id="summaryGoldDisplay">R$0.00 <small>/ $0.00</small></div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">Total Packs:</div>
+                                    <div class="result-value" id="summaryPacksDisplay">R$0.00 <small>/ $0.00</small></div>
+                                </div>
+                                <hr style="border-color: var(--panel-border); margin: 8px 0;">
+                                <div class="total-grand">
+                                    Total Geral a Pagar
+                                    <span id="summaryTotalDisplay">R$0.00 <small>/ $0.00</small></span>
+                                </div>
+                            </div>
+                            <button class="btn" onclick="copySmartClipboard(event)">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copiar Resumo do Pedido
+                            </button>
+                            <button class="invisible-button" onclick="copyForCardPayment(event)" title="Opção para pagamento com cartão"></button>
+                        </div>
+                        <div class="payment-methods">
+                            <h3>Formas de Pagamento</h3>
+                            <div class="payment-method">
+                                <div class="payment-method-title"><span>Pix</span></div>
+                                <div class="payment-details">
+                                    <p><strong>CELULAR:</strong> <span id="pixCelular">14988231270</span></p>
+                                    <p><strong>Nome:</strong> <span id="pixNome">DAOSHI TRADE</span></p>
+                                </div>
+                                <button class="copy-payment-btn" onclick="copyPaymentDetail('pix', event)" title="Copiar Chave Pix"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-method-title"><span>Binance</span></div>
+                                <div class="payment-details"><p><strong>Email:</strong> <span id="binanceEmail">estrela203@hotmail.com</span></p></div>
+                                <button class="copy-payment-btn" onclick="copyPaymentDetail('binance', event)" title="Copiar E-mail Binance"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+    <audio id="backgroundMusic" src="https://github.com/maykbrito/devlinks/raw/main/assets/music.mp3" loop=""></audio>
+    <div class="sound-control muted" id="soundControl">
+        <svg class="sound-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"></path><path class="wave" d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="currentColor" fill="none"></path><path class="wave" d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="currentColor" fill="none"></path><line class="line" x1="23" y1="1" x2="1" y2="23" stroke="currentColor" stroke-width="2" style="opacity: 0;"></line></svg>
+    </div>
+    <div class="volume-slider" id="volumeSlider"><span class="volume-label">Volume:</span><input type="range" min="0" max="100" value="70" id="volumeRange"></div>
+
+    <div id="editPanel" class="">
+        <div class="edit-header" id="editHeader">Editar Preços de Packs</div>
+        <div id="editContent"><h3>Preços de Venda (Base)</h3><div class="form-group"><label>$1</label><input type="number" step="0.01" id="editBase_1" value="0.9"></div><div class="form-group"><label>$3</label><input type="number" step="0.01" id="editBase_3" value="2.62"></div><div class="form-group"><label>$5</label><input type="number" step="0.01" id="editBase_5" value="4.15"></div><div class="form-group"><label>$10 Packs</label><input type="number" step="0.01" id="editBase_10" value="7.6"></div><div class="form-group"><label>$30</label><input type="number" step="0.01" id="editBase_30" value="22.8"></div><div class="form-group"><label>$50</label><input type="number" step="0.01" id="editBase_50" value="38.5"></div><div class="form-group"><label>$100</label><input type="number" step="0.01" id="editBase_100" value="76"></div><div class="form-group"><label>$10 Passes</label><input type="number" step="0.01" id="editBase_10-passes" value="7.6"></div><h3>Preços de Custo (Fornecedores)</h3><h4>Sombra</h4><div class="form-group"><label>$1</label><input type="number" step="0.01" id="editSupp_Sombra_1" value="0.725"></div><div class="form-group"><label>$3</label><input type="number" step="0.01" id="editSupp_Sombra_3" value="2.17"></div><div class="form-group"><label>$5</label><input type="number" step="0.01" id="editSupp_Sombra_5" value="3.62"></div><div class="form-group"><label>$10</label><input type="number" step="0.01" id="editSupp_Sombra_10" value="7.25"></div><div class="form-group"><label>$30</label><input type="number" step="0.01" id="editSupp_Sombra_30" value="21.75"></div><div class="form-group"><label>$50</label><input type="number" step="0.01" id="editSupp_Sombra_50" value="38.5"></div><div class="form-group"><label>$100</label><input type="number" step="0.01" id="editSupp_Sombra_100" value="72.5"></div><h4>Daodao</h4><div class="form-group"><label>$1</label><input type="number" step="0.01" id="editSupp_Daodao_1" value="0.73"></div><div class="form-group"><label>$3</label><input type="number" step="0.01" id="editSupp_Daodao_3" value="2.19"></div><div class="form-group"><label>$5</label><input type="number" step="0.01" id="editSupp_Daodao_5" value="4"></div><div class="form-group"><label>$10</label><input type="number" step="0.01" id="editSupp_Daodao_10" value="7.3"></div><div class="form-group"><label>$30</label><input type="number" step="0.01" id="editSupp_Daodao_30" value="21.9"></div><div class="form-group"><label>$50</label><input type="number" step="0.01" id="editSupp_Daodao_50" value="37.5"></div><div class="form-group"><label>$100</label><input type="number" step="0.01" id="editSupp_Daodao_100" value="73"></div><h4>Dog</h4><div class="form-group"><label>$1</label><input type="number" step="0.01" id="editSupp_Dog_1" value="0.9"></div><div class="form-group"><label>$3</label><input type="number" step="0.01" id="editSupp_Dog_3" value="2.5"></div><div class="form-group"><label>$5</label><input type="number" step="0.01" id="editSupp_Dog_5" value="4"></div><div class="form-group"><label>$10</label><input type="number" step="0.01" id="editSupp_Dog_10" value="7.5"></div><div class="form-group"><label>$30</label><input type="number" step="0.01" id="editSupp_Dog_30" value="21.6"></div><div class="form-group"><label>$50</label><input type="number" step="0.01" id="editSupp_Dog_50" value="39"></div><div class="form-group"><label>$100</label><input type="number" step="0.01" id="editSupp_Dog_100" value="71"></div><div class="form-group"><label>$10 Passes</label><input type="number" step="0.01" id="editSupp_Dog_10-passes" value="7.3"></div></div>
+        <div class="edit-footer">
+            <button id="saveBtn" class="btn" onclick="saveChanges(event)">Salvar e Baixar</button>
+        </div>
+    </div>
+
+<script>
+    // ===================================================================
+    // ============ ⚙️ ÁREA DE CONFIGURAÇÃO PRINCIPAL ⚙️ =============
+    // ===================================================================
+    const DEFAULT_CONFIG = {
+    "defaultExchangeRate": 5.88,
+    "cardFeePercentage": 0.06,
+    "goldRates": {
+        "base": 33,
+        "above5k": 30,
+        "above10k": 28,
+        "above20k": 25,
+        "usdt": 4.7
+    },
+    "basePackagePrices": {
+        "1": 0.9,
+        "3": 2.65,
+        "5": 4.25,
+        "10": 7.65,
+        "30": 22.85,
+        "50": 40.55,
+        "100": 76.05,
+        "10-passes": 7.65
+    }
+};
+
+    const DEFAULT_SUPPLIER_PRICES = {
+    "Sombra": {
+        "1": 0.725,
+        "3": 2.17,
+        "5": 3.62,
+        "10": 7.25,
+        "30": 21.75,
+        "50": 38.5,
+        "100": 72.5
+    },
+    "Daodao": {
+        "1": 0.73,
+        "3": 2.19,
+        "5": 4,
+        "10": 7.3,
+        "30": 21.9,
+        "50": 39,
+        "100": 73
+    },
+    "Dog": {
+        "1": 0.9,
+        "3": 2.5,
+        "5": 4,
+        "10": 7.5,
+        "30": 21.6,
+        "50": 39,
+        "100": 71,
+        "10-passes": 7.3
+    }
+};
+    
+    const DEFAULT_INFO_DATA = {
+    "vendedores": [
+        {
+            "nome": "Conde",
+            "servidor": " SA"
+        }
+    ],
+    "informacoesGerais": "<p>Fornecedores de Packs</p>\n\n\n\n<p>Pack de 100$: Dog (proibido packs de 10$ e 50$, passe e pack de 30$ permitido)</p>\n\n\n\n\n<p>Pack de 50$: Daodao (pode enviar pedidos em geral, mas é mais caro)</p>\n\n\n\n\n<p>Outros Packs: Sombra (pedidos que não são de 100$ ou 50$)</p>\n\n\n\n\n<p>(NC e ROM continuam como antes.)</p>\n\n\n\n\n\n\n\n\n<hr style=\"border-color: var(--panel-border); margin: 15px 0;\">\n\n\n\n\n\n<p>Compra de Gold</p>\n\n\n\n<p>Compramos gold por: 23,50 reais // 4.39$</p>\n\n\n\n\n\n\n\n\n<hr style=\"border-color: var(--panel-border); margin: 15px 0;\">\n\n\n\n\n\n<p>Como funciona o Intermédio?</p>\n\n\n\n<p>Eu seguro o dinheiro, auxilio na mudança dos dados/transferência e libero o dinheiro quando tudo estiver ok.</p>\n\n\n\n\n\n<p>G-mail: Dinheiro liberado após 7 dias.</p>\n\n\n\n\n<p>NFT: Dinheiro liberado na hora.</p>\n\n\n\n\n\n<p>Valores:</p>\n\n\n\n\n\n<p>4% para Wallet</p>\n\n\n\n\n<p>8% para Gmail</p>\n\n\n\n\n<p>Valor mínimo da transação: 35 reais</p>\n\n\n\n\n\n\n\n\n\n<hr style=\"border-color: var(--panel-border); margin: 15px 0;\">"
+};
+
+    let config = JSON.parse(localStorage.getItem('daoshiConfig')) || JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+    let supplierPrices = JSON.parse(localStorage.getItem('daoshiSupplierPrices')) || JSON.parse(JSON.stringify(DEFAULT_SUPPLIER_PRICES));
+    let infoData = JSON.parse(localStorage.getItem('daoshiInfoData')) || JSON.parse(JSON.stringify(DEFAULT_INFO_DATA));
+
+    const SPLIT_ORDER_THRESHOLD_USD = 150;
+    const SPLIT_ORDER_MIN_PACK_TYPES = 2;
+
+    // ===================================================================
+    // ============ ⚠️ FIM DA ÁREA DE CONFIGURAÇÃO ⚠️ =============
+    // ===================================================================
+
+    let audioContext, masterGainNode, backgroundMusic;
+    let isMuted = true;
+    let audioInitialized = false;
+    let exchangeRate = config.defaultExchangeRate;
+    let listaOuroGlobal = [];
+    let pacoteQuantidades = { 1: 0, 3: 0, 5: 0, '10': 0, '10-passes': 0, 30: 0, 50: 0, 100: 0 };
+
+    let isEditMode = false;
+    let currentTab = 'gold';
+
+    window.onload = function() {
+        initializeUIFromConfig();
+        buildInfoTab();
+        updateAllCalculations();
+        setupEventListeners();
+        atualizarCotacaoDolar();
+        document.getElementById("soundControl").classList.add("muted");
+    };
+    function showTab(tabName) {
+        if (isEditMode) {
+            applyStagedChanges(); // Salva as alterações da aba atual na memória antes de trocar
+        }
+        document.querySelectorAll('.tab-pane').forEach(tab => tab.classList.remove('active'));
+        document.getElementById(tabName + 'Tab').classList.add('active');
+        document.querySelectorAll('.tab-button').forEach(button => button.classList.remove('active'));
+        document.querySelector(`.tab-button[onclick="showTab('${tabName}')"]`).classList.add('active');
+        currentTab = tabName;
+        if (isEditMode) {
+            showEditPanel(); // Recarrega o painel para a nova aba
+        }
+        playSound('click');
+    }
+
+    function buildInfoTab() {
+        const vendedoresContainer = document.getElementById('vendedores-list');
+        const infoContainer = document.getElementById('info-content');
+
+        vendedoresContainer.innerHTML = '';
+        vendedoresContainer.className = 'vendedores-grid';
+        infoData.vendedores.forEach(vendedor => {
+            if (vendedor.nome.trim() || vendedor.servidor.trim()) {
+                const item = document.createElement('div');
+                item.className = 'vendedor-item';
+                item.innerHTML = `<p><strong>Nome:</strong> ${vendedor.nome}</p><p><strong>Servidor:</strong> ${vendedor.servidor}</p>`;
+                vendedoresContainer.appendChild(item);
+            }
+        });
+
+        infoContainer.innerHTML = infoData.informacoesGerais;
+        infoContainer.className = 'info-content-container';
+    }
+
+    function initAudio() {
+        if (audioInitialized) return;
+        try {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            masterGainNode = audioContext.createGain();
+            masterGainNode.gain.value = 0.7;
+            masterGainNode.connect(audioContext.destination);
+            backgroundMusic = document.getElementById("backgroundMusic");
+            backgroundMusic.volume = 0.35;
+            audioInitialized = true;
+            toggleMute();
+        } catch (e) {
+            console.error("AudioContext não pôde ser iniciado.", e);
+        }
+    }
+    function playSound(name) {
+        if (!audioInitialized || isMuted) return;
+        const noteMap = { click: 800, hover: 600, success: 1200, type: 440 + Math.random() * 100 };
+        const gainMap = { click: 0.1, hover: 0.05, success: 0.2, type: 0.03 };
+        const duration = name === "success" ? 0.3 : 0.1;
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        oscillator.type = name === "click" ? "triangle" : "sine";
+        oscillator.frequency.value = noteMap[name];
+        gainNode.gain.value = gainMap[name];
+        oscillator.connect(gainNode).connect(masterGainNode);
+        oscillator.start();
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + duration);
+        oscillator.stop(audioContext.currentTime + duration);
+    }
+    function toggleMute() {
+        if (!audioInitialized) initAudio();
+        isMuted = !isMuted;
+        document.getElementById("soundControl").classList.toggle("muted", isMuted);
+        if (backgroundMusic) {
+            isMuted ? backgroundMusic.pause() : backgroundMusic.play().catch(e => {});
+        }
+        playSound('click');
+    }
+    function setupEventListeners() {
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener("keydown", () => playSound("type"));
+            if (input.type === 'number') {
+                input.addEventListener('focus', () => { if (input.value === '0') input.value = ''; });
+                input.addEventListener('blur', () => { if (input.value === '') input.value = '0'; });
+            }
+        });
+        document.querySelectorAll("button, .details-toggle summary").forEach(el => {
+            el.addEventListener("click", () => playSound("click"));
+            el.addEventListener("mouseenter", () => playSound("hover"));
+        });
+        const soundControl = document.getElementById("soundControl");
+        const volumeSlider = document.getElementById("volumeSlider");
+        soundControl.addEventListener("click", toggleMute);
+        soundControl.addEventListener("mouseenter", () => volumeSlider.classList.add("active"));
+        volumeSlider.addEventListener("mouseleave", () => volumeSlider.classList.remove("active"));
+        document.getElementById("volumeRange").addEventListener("input", function() {
+            if (audioInitialized) {
+                const vol = this.value / 100;
+                masterGainNode.gain.value = vol;
+                if(backgroundMusic) backgroundMusic.volume = vol * 0.5;
+            }
+        });
+        document.getElementById('editModeBtn').addEventListener('click', toggleEditMode);
+    }
+
+    function showTooltip(message, event) {
+        const tooltip = document.getElementById("tooltip");
+        tooltip.textContent = message;
+        const rect = event.target.getBoundingClientRect();
+        tooltip.style.left = `${rect.left + rect.width / 2 - tooltip.offsetWidth / 2}px`;
+        tooltip.style.top = `${rect.top - tooltip.offsetHeight - 10}px`;
+        tooltip.style.opacity = "1";
+        setTimeout(() => { tooltip.style.opacity = "0"; }, 2000);
+    }
+    function initializeUIFromConfig() {
+        document.getElementById('rate1k').innerText = config.goldRates.base.toFixed(2);
+        document.getElementById('rate5k').innerText = config.goldRates.above5k.toFixed(2);
+        document.getElementById('rate10k').innerText = config.goldRates.above10k.toFixed(2);
+        document.getElementById('rate20k').innerText = config.goldRates.above20k.toFixed(2);
+        document.getElementById('rateDollar').innerText = config.goldRates.usdt.toFixed(2);
+    }
+    function updateAllCalculations() {
+        updateOuroCalculations();
+        updatePacoteTotals();
+    }
+    function updateOuroCalculations() {
+        const quantidade = parseInt(document.getElementById("quantidadeOuro").value) || 0;
+        let goldRateR = config.goldRates.base;
+        if (quantidade >= 20000) goldRateR = config.goldRates.above20k;
+        else if (quantidade >= 10000) goldRateR = config.goldRates.above10k;
+        else if (quantidade >= 5000) goldRateR = config.goldRates.above5k;
+        const totalR = (quantidade / 1000) * goldRateR;
+        const totalD = (quantidade / 1000) * config.goldRates.usdt;
+        listaOuroGlobal = calcularListaOuro(quantidade);
+        document.getElementById("totalROuro").innerText = totalR.toFixed(2);
+        document.getElementById("totalDOuro").innerText = totalD.toFixed(2);
+        document.getElementById("quantidadeAnunciada").innerText = listaOuroGlobal.join(", ") || '0';
+        document.getElementById('grossGoldDisplay').innerText = quantidade > 0 ? `(Anunciar: ${Math.floor(quantidade * 1.053)})` : '';
+        updateSummary();
+    }
+    function updatePacoteQuantidades(pacote, quantidade) {
+        pacoteQuantidades[pacote] = parseInt(quantidade) || 0;
+        updatePacoteTotals();
+        playSound('type');
+    }
+    function updatePacoteTotals() {
+        calculateBestSupplier();
+        updateSummary();
+    }
+
+    function calculateCostForStrategy(allowedSuppliers) {
+        let totalCostUSD = 0;
+        const assignments = {};
+
+        for (const [pacote, quantity] of Object.entries(pacoteQuantidades)) {
+            if (quantity > 0) {
+                let cheapest = { supplier: null, price: Infinity };
+                
+                allowedSuppliers.forEach(supplierName => {
+                    let price = 0;
+                    if (supplierName === 'Dog') {
+                        price = supplierPrices[supplierName][pacote] || Infinity;
+                    } else {
+                        const priceKey = (pacote === '10-passes') ? '10' : pacote;
+                        price = supplierPrices[supplierName][priceKey] || Infinity;
+                    }
+
+                    if (price < cheapest.price) {
+                        cheapest = { supplier: supplierName, price: price };
+                    }
+                });
+
+                if (cheapest.supplier) {
+                    totalCostUSD += quantity * cheapest.price;
+                    if (!assignments[cheapest.supplier]) {
+                        assignments[cheapest.supplier] = [];
+                    }
+                    let packName = `$${pacote}`;
+                    if(pacote === '10') packName = '$10 Packs';
+                    if(pacote === '10-passes') packName = '$10 Passes';
+                    assignments[cheapest.supplier].push(`${quantity}x ${packName}`);
+                }
+            }
+        }
+        return { costUSD: totalCostUSD, assignments };
+    }
+
+
+    function calculateBestSupplier() {
+        const recommendationEl = document.getElementById('bestSupplier');
+        const recommendationTitleEl = document.getElementById('recommendationTitle');
+        const supplierNames = Object.keys(supplierPrices);
+        
+        let totalRevenueUSD = 0;
+        for (const [pacote, quantity] of Object.entries(pacoteQuantidades)) {
+            if (quantity > 0) {
+                totalRevenueUSD += quantity * (config.basePackagePrices[pacote] || 0);
+            }
+        }
+
+        let cheapestSupplierTotalUSD = Infinity;
+        supplierNames.forEach(name => {
+            const result = calculateCostForStrategy([name]);
+            const totalCostUSD = result.costUSD;
+            const totalCostBRL = totalCostUSD * exchangeRate;
+            const profitUSD = totalRevenueUSD - totalCostUSD;
+            const profitBRL = profitUSD * exchangeRate;
+
+            const supplierId = name.toLowerCase();
+            document.getElementById(`${supplierId}Cost`).innerText = `R$ ${totalCostBRL.toFixed(2)}`;
+            document.getElementById(`${supplierId}CostUsd`).innerText = `$ ${totalCostUSD.toFixed(2)}`;
+            document.getElementById(`${supplierId}Lucro`).innerHTML = `R$ ${profitBRL.toFixed(2)}<small>$ ${profitUSD.toFixed(2)}</small>`;
+
+            if (totalCostUSD < cheapestSupplierTotalUSD) {
+                cheapestSupplierTotalUSD = totalCostUSD;
+            }
+        });
+        
+        const hasAnyPackage = Object.values(pacoteQuantidades).some(q => q > 0);
+        const selectedPackTypesCount = Object.values(pacoteQuantidades).filter(q => q > 0).length;
+
+        if (!hasAnyPackage) {
+            recommendationTitleEl.innerText = 'Melhor enviar para:';
+            recommendationEl.className = 'supplier-recommendation-value recommendation-simple';
+            recommendationEl.innerHTML = 'N/A';
+            return;
+        }
+
+        const strategies = [];
+        supplierNames.forEach(name => {
+            const result = calculateCostForStrategy([name]);
+            strategies.push({ name: name, cost: result.costUSD, assignments: result.assignments });
+        });
+
+        if (cheapestSupplierTotalUSD > SPLIT_ORDER_THRESHOLD_USD && selectedPackTypesCount >= SPLIT_ORDER_MIN_PACK_TYPES) {
+             for (let i = 0; i < supplierNames.length; i++) {
+                for (let j = i + 1; j < supplierNames.length; j++) {
+                    const pair = [supplierNames[i], supplierNames[j]];
+                    const result = calculateCostForStrategy(pair);
+                    strategies.push({ name: pair.join(' & '), cost: result.costUSD, assignments: result.assignments });
+                }
+            }
+        }
+
+        strategies.sort((a, b) => a.cost - b.cost);
+        const bestStrategy = strategies[0];
+
+        if (bestStrategy && Object.keys(bestStrategy.assignments).length > 1) {
+            recommendationTitleEl.innerText = 'Recomendação Otimizada:';
+            recommendationEl.className = 'supplier-recommendation-value recommendation-split';
+            
+            const costUSD = bestStrategy.cost;
+            const costBRL = costUSD * exchangeRate;
+            const profitUSD = totalRevenueUSD - costUSD;
+            const profitBRL = profitUSD * exchangeRate;
+            
+            let summaryHTML = `<div class="recommendation-split-summary">Custo Total: <b>R$ ${costBRL.toFixed(2)}</b> ($ ${costUSD.toFixed(2)})<br>Lucro Total: <b>R$ ${profitBRL.toFixed(2)}</b> ($ ${profitUSD.toFixed(2)})</div>`;
+
+            let recommendationText = '';
+            for(const [supplier, items] of Object.entries(bestStrategy.assignments)){
+                recommendationText += `--- ${supplier} ---\n`;
+                items.forEach(item => {
+                    recommendationText += `${item}\n`;
+                });
+            }
+            recommendationEl.innerHTML = summaryHTML + recommendationText.trim();
+        } else {
+            let simpleRec = 'N/A';
+            if (bestStrategy) {
+                simpleRec = bestStrategy.name;
+                const secondBest = strategies.find(s => s.name !== bestStrategy.name);
+                if (secondBest && (secondBest.cost - bestStrategy.cost) * exchangeRate < 0.50) {
+                   simpleRec = 'Tanto faz';
+                }
+            }
+            recommendationTitleEl.innerText = 'Melhor enviar para:';
+            recommendationEl.className = 'supplier-recommendation-value recommendation-simple';
+            recommendationEl.innerHTML = simpleRec;
+        }
+    }
+
+
+    function updateSummary() {
+        const totalROuro = parseFloat(document.getElementById("totalROuro").innerText) || 0;
+        const totalDOuro = parseFloat(document.getElementById("totalDOuro").innerText) || 0;
+        
+        let totalDPacotes = 0;
+        for (const [pacote, quantity] of Object.entries(pacoteQuantidades)) {
+             totalDPacotes += (quantity || 0) * (config.basePackagePrices[pacote] || 0);
+        }
+        
+        const totalRPacotes = totalDPacotes * exchangeRate;
+        const totalGeralR = totalROuro + totalRPacotes;
+        const totalGeralD = totalDOuro + totalDPacotes;
+
+        document.getElementById("summaryGoldDisplay").innerHTML = `R$${totalROuro.toFixed(2)} <small>/ $${totalDOuro.toFixed(2)}</small>`;
+        document.getElementById("summaryPacksDisplay").innerHTML = `R$${totalRPacotes.toFixed(2)} <small>/ $${totalDPacotes.toFixed(2)}</small>`;
+        document.getElementById("summaryTotalDisplay").innerHTML = `R$${totalGeralR.toFixed(2)} <small>/ $${totalGeralD.toFixed(2)}</small>`;
+    }
+    function calcularListaOuro(quantidade) {
+        if (quantidade <= 0) return [];
+        const total = Math.floor(quantidade * 1.053);
+        let partes = quantidade >= 20000 ? Math.ceil(quantidade / 5000) : Math.ceil(quantidade / 2500);
+        if (partes <= 0) partes = 1;
+        let resultado = [];
+        let soma = 0;
+        const base = Math.floor(total / partes);
+        for (let i = 0; i < partes - 1; i++) {
+            resultado.push(base);
+            soma += base;
+        }
+        resultado.push(total - soma);
+        return resultado;
+    }
+    function calculateGoldFromReal() {
+        const valor = parseFloat(document.getElementById("inputReal").value) || 0;
+        const estimatedGold = (valor * 1000) / config.goldRates.base;
+        let rate = config.goldRates.base;
+        if (estimatedGold >= 20000) rate = config.goldRates.above20k;
+        else if (estimatedGold >= 10000) rate = config.goldRates.above10k;
+        else if (estimatedGold >= 5000) rate = config.goldRates.above5k;
+        const gold = (valor * 1000) / rate;
+        document.getElementById("resultadoReal").textContent = `≈${Math.round(gold)} Gold`;
+        playSound('type');
+    }
+    function calculateGoldFromDollar() {
+        const valor = parseFloat(document.getElementById("inputDollar").value) || 0;
+        const gold = (valor * 1000) / config.goldRates.usdt;
+        document.getElementById("resultadoDollar").textContent = `≈${Math.round(gold)} Gold`;
+        playSound('type');
+    }
+    function sendToGold(source, event) {
+        const resultId = source === 'real' ? 'resultadoReal' : 'resultadoDollar';
+        const goldValue = parseInt(document.getElementById(resultId).textContent.replace(/\D/g, '')) || 0;
+        document.getElementById('quantidadeOuro').value = goldValue;
+        updateAllCalculations();
+        playSound('success');
+        showTooltip(`Valor ${goldValue} enviado para o cálculo!`, event);
+    }
+    async function atualizarCotacaoDolar() {
+        try {
+            const response = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=USDTBRL');
+            if (!response.ok) throw new Error('Falha na API');
+            const data = await response.json();
+            exchangeRate = parseFloat(data.price);
+        } catch (error) {
+            console.error('Erro ao buscar cotação, usando valor padrão:', error);
+            exchangeRate = config.defaultExchangeRate;
+        } finally {
+            document.getElementById('cotacao').innerHTML = `Cotação USDT/BRL: <span class="value">R$${exchangeRate.toFixed(2)}</span>`;
+            updateAllCalculations();
+        }
+    }
+    function copyContent(text, message, event) {
+        if (!text) {
+            showTooltip("Nada para copiar!", event);
+            return;
+        }
+        navigator.clipboard.writeText(text).then(() => {
+            showTooltip(message, event);
+            playSound("success");
+        }).catch(err => {
+            console.error('Falha ao copiar: ', err);
+            showTooltip("Erro ao copiar!", event);
+        });
+    }
+    function copyPaymentDetail(method, event) {
+        let textToCopy = '';
+        let message = '';
+        if (method === 'pix') {
+            const pixCelular = document.getElementById('pixCelular').innerText;
+            const pixNome = document.getElementById('pixNome').innerText;
+            textToCopy = `PIX: ${pixCelular}\nNome: ${pixNome}`; 
+            message = 'Informações do Pix copiadas!';
+        } else if (method === 'binance') {
+            textToCopy = document.getElementById('binanceEmail').innerText;
+            message = 'E-mail da Binance copiado!';
+        }
+        copyContent(textToCopy, message, event);
+    }
+    function getFormValues() {
+        const data = {
+            quantidadeOuro: parseInt(document.getElementById("quantidadeOuro").value) || 0,
+            servidorOuro: document.getElementById("servidor").value,
+            totalROuro: parseFloat(document.getElementById("totalROuro").innerText) || 0,
+            totalDOuro: parseFloat(document.getElementById("totalDOuro").innerText) || 0,
+            quantidadeAnunciada: listaOuroGlobal.join(', ') || '0',
+            hasGold: false, hasPacks: false,
+            pacotesTexto: '', totalPacotesR: 0, totalPacotesD: 0,
+        };
+        if (data.quantidadeOuro > 0) data.hasGold = true;
+        Object.keys(pacoteQuantidades).forEach(p => {
+            const qtd = pacoteQuantidades[p];
+            if (qtd > 0) {
+                data.hasPacks = true;
+                const preco = config.basePackagePrices[p];
+                const subtotalD = qtd * preco;
+                let packName = `$${p}`;
+                if (p === '10') packName = '$10 Packs';
+                if (p === '10-passes') packName = '$10 Passes';
+
+                data.pacotesTexto += `  - Pacote de ${packName}: ${qtd} un.\n`;
+                data.totalPacotesD += subtotalD;
+            }
+        });
+        data.totalPacotesR = data.totalPacotesD * exchangeRate;
+        return data;
+    }
+
+    function copySmartClipboard(event) {
+        const data = getFormValues();
+        if (!data.hasGold && !data.hasPacks) {
+            showTooltip("Preencha Gold ou Packs!", event);
+            return;
+        }
+        let texto = "⭐ RESUMO DO PEDIDO DAOSHI ⭐\n---------------------------------\n";
+        if (data.hasGold) {
+            texto += `🌟 GOLD\n`;
+            if (data.servidorOuro) texto += `  - Servidor: ${data.servidorOuro}\n`;
+            texto += `  - Anunciar: ${data.quantidadeAnunciada}\n`;
+            texto += `  - Valor: R$${data.totalROuro.toFixed(2)} / $${data.totalDOuro.toFixed(2)}\n---------------------------------\n`;
+        }
+        if (data.hasPacks) {
+            texto += `💮 PACKS\n${data.pacotesTexto}`;
+            texto += `  - Valor: R$${data.totalPacotesR.toFixed(2)} / $${data.totalPacotesD.toFixed(2)}\n---------------------------------\n`;
+            if (data.login) { 
+                texto += `👤 DADOS DA CONTA\n  - Login: ${data.login}\n  - Senha: ${data.password}\n  - Nick: ${data.nickname}\n  - Servidor: ${data.serverPacks}\n  - Level: ${data.level}\n  - Método: ${data.metodoLogin}\n---------------------------------\n`;
+            }
+        }
+        const totalGeralR = data.totalROuro + data.totalPacotesR;
+        const totalGeralD = data.totalDOuro + data.totalPacotesD;
+        texto += `💰 TOTAL GERAL: R$${totalGeralR.toFixed(2)} / $${totalGeralD.toFixed(2)}\n`;
+        const pixCelular = document.getElementById('pixCelular').innerText;
+        const pixNome = document.getElementById('pixNome').innerText;
+        const binanceEmail = document.getElementById('binanceEmail').innerText;
+        texto += "---------------------------------\n";
+        texto += "🌸 INFORMAÇÕES DE PAGAMENTO 🌸\n";
+        texto += `PIX (Celular): ${pixCelular}\n`;
+        texto += `Nome: ${pixNome}\n\n`;
+        texto += `Binance (Email): ${binanceEmail}\n`;
+        copyContent(texto, "Resumo copiado!", event);
+    }
+    
+    function copyForCardPayment(event) {
+        const data = getFormValues();
+        if (!data.hasGold && !data.hasPacks) {
+            showTooltip("Preencha algo para pagar com cartão!", event);
+            return;
+        }
+        const totalGeralR = data.totalROuro + data.totalPacotesR;
+        const totalGeralD = data.totalDOuro + data.totalPacotesD;
+        const totalComTaxa = totalGeralR * (1 + config.cardFeePercentage);
+        
+        let texto = "⭐ Pedido para Pagamento no Cartão ⭐\n---------------------------------\n";
+        if (data.hasGold) texto += `- Item: ${data.quantidadeOuro} Gold\n`;
+        if (data.hasPacks) texto += `- Itens: Pacotes de Packs\n`;
+        
+        texto += `Valor do Pedido: R$${totalGeralR.toFixed(2)} / $${totalGeralD.toFixed(2)}\n`;
+        texto += `Taxa do Cartão (${(config.cardFeePercentage * 100).toFixed(0)}%): R$${(totalComTaxa - totalGeralR).toFixed(2)}\n`;
+        texto += `TOTAL A PAGAR: R$${totalComTaxa.toFixed(2)}\n\n`;
+        texto += "Link de Pagamento (Mercado Pago):\nhttps://link.mercadopago.com.br/daoshicashstore";
+        
+        texto += "\n\n";
+        texto += "⚠️ INFORMAÇÕES IMPORTANTES ⚠️\n";
+        texto += "---------------------------------\n";
+        texto += "💳 Pagamentos no Cartão de Crédito\n\n";
+        texto += "• O cartão deve ser, obrigatoriamente, do próprio comprador.\n";
+        texto += `• Pagamentos têm acréscimo de ${(config.cardFeePercentage * 100).toFixed(0)}% de juros.\n\n`;
+        texto += "🔒 Para segurança da transação, é necessário informar:\n";
+        texto += "  - Nome completo:\n";
+        texto += "  - CPF:\n";
+        texto += "  - Telefone (WhatsApp):\n";
+        texto += "  - Rede social ativa:\n\n";
+        texto += "❗️Atenção: Em casos de suspeita de fraude ou tentativa de golpe, temos processos internos e legais para identificar e responsabilizar o comprador.";
+        
+        copyContent(texto, "Informações para cartão copiadas!", event);
+    }
+
+    // --- MODO DE EDIÇÃO ---
+
+    function toggleEditMode() {
+        isEditMode = !isEditMode;
+        const editPanel = document.getElementById('editPanel');
+        if (isEditMode) {
+            editPanel.classList.add('active');
+            showEditPanel();
+        } else {
+            editPanel.classList.remove('active');
+        }
+        playSound('click');
+    }
+
+    function showEditPanel() {
+        const content = document.getElementById('editContent');
+        content.innerHTML = '';
+        if (currentTab === 'gold') {
+            document.getElementById('editHeader').innerText = 'Editar Taxas de Gold';
+            content.innerHTML = `
+                <div class="form-group"><label>1k+ (R$)</label><input type="number" step="0.01" id="editBase" value="${config.goldRates.base}"></div>
+                <div class="form-group"><label>5k+ (R$)</label><input type="number" step="0.01" id="editAbove5k" value="${config.goldRates.above5k}"></div>
+                <div class="form-group"><label>10k+ (R$)</label><input type="number" step="0.01" id="editAbove10k" value="${config.goldRates.above10k}"></div>
+                <div class="form-group"><label>20k+ (R$)</label><input type="number" step="0.01" id="editAbove20k" value="${config.goldRates.above20k}"></div>
+                <div class="form-group"><label>USDT ($)</label><input type="number" step="0.01" id="editUsdt" value="${config.goldRates.usdt}"></div>
+            `;
+        } else if (currentTab === 'packs') {
+            document.getElementById('editHeader').innerText = 'Editar Preços de Packs';
+            let html = `<h3>Preços de Venda (Base)</h3>`;
+            Object.keys(config.basePackagePrices).forEach(key => {
+                html += `<div class="form-group"><label>${key === '10' ? '$10 Packs' : key === '10-passes' ? '$10 Passes' : `$${key}`}</label><input type="number" step="0.01" id="editBase_${key}" value="${config.basePackagePrices[key]}"></div>`;
+            });
+            html += `<h3>Preços de Custo (Fornecedores)</h3>`;
+            Object.keys(supplierPrices).forEach(supplier => {
+                html += `<h4>${supplier}</h4>`;
+                Object.keys(supplierPrices[supplier]).forEach(key => {
+                    html += `<div class="form-group"><label>${key === '10-passes' ? '$10 Passes' : `$${key}`}</label><input type="number" step="0.01" id="editSupp_${supplier}_${key}" value="${supplierPrices[supplier][key]}"></div>`;
+                });
+            });
+            content.innerHTML = html;
+        } else if (currentTab === 'info') {
+            document.getElementById('editHeader').innerText = 'Editar Informações';
+            content.innerHTML = `<h3>Vendedores</h3><div id="vendorsEdit"></div><button class="btn" onclick="addVendorEdit(-1, '', '')">Adicionar Vendedor</button><br><br>`;
+            const vendorsEdit = document.getElementById('vendorsEdit');
+            infoData.vendedores.forEach((v, index) => {
+                addVendorEdit(index, v.nome, v.servidor);
+            });
+            content.innerHTML += `<h3>Informações Gerais (Texto Simples)</h3><textarea id="editInfoGerais" rows="15" style="width: 100%;">${htmlToPlainText(infoData.informacoesGerais)}</textarea>`;
+        }
+    }
+
+    function addVendorEdit(index, nome, servidor) {
+        const vendorsEdit = document.getElementById('vendorsEdit');
+        const div = document.createElement('div');
+        div.className = 'vendor-edit';
+        div.innerHTML = `
+            <input type="text" placeholder="Nome" value="${nome}">
+            <input type="text" placeholder="Servidor" value="${servidor}">
+            <button class="btn-remove" onclick="this.parentElement.remove()">X</button>
+        `;
+        vendorsEdit.appendChild(div);
+    }
+    
+    function applyStagedChanges() {
+        const editPanel = document.getElementById('editPanel');
+        if (!isEditMode || !editPanel.classList.contains('active')) return;
+
+        const activeTab = document.querySelector('.tab-pane.active').id;
+
+        if (activeTab === 'goldTab' && document.getElementById('editBase')) {
+            config.goldRates.base = parseFloat(document.getElementById('editBase').value) || 0;
+            config.goldRates.above5k = parseFloat(document.getElementById('editAbove5k').value) || 0;
+            config.goldRates.above10k = parseFloat(document.getElementById('editAbove10k').value) || 0;
+            config.goldRates.above20k = parseFloat(document.getElementById('editAbove20k').value) || 0;
+            config.goldRates.usdt = parseFloat(document.getElementById('editUsdt').value) || 0;
+        } else if (activeTab === 'packsTab' && document.getElementById('editBase_1')) {
+            Object.keys(config.basePackagePrices).forEach(key => {
+                config.basePackagePrices[key] = parseFloat(document.getElementById(`editBase_${key}`).value) || 0;
+            });
+            Object.keys(supplierPrices).forEach(supplier => {
+                Object.keys(supplierPrices[supplier]).forEach(key => {
+                    supplierPrices[supplier][key] = parseFloat(document.getElementById(`editSupp_${supplier}_${key}`).value) || 0;
+                });
+            });
+        } else if (activeTab === 'infoTab' && document.getElementById('vendorsEdit')) {
+            infoData.vendedores = [];
+            const vendorEdits = document.querySelectorAll('.vendor-edit');
+            vendorEdits.forEach(v => {
+                const nome = v.querySelector('input[placeholder="Nome"]').value;
+                const servidor = v.querySelector('input[placeholder="Servidor"]').value;
+                if(nome.trim() || servidor.trim()) {
+                    infoData.vendedores.push({ nome, servidor });
+                }
+            });
+            infoData.informacoesGerais = plainTextToHtml(document.getElementById('editInfoGerais').value);
+        }
+    }
+
+    function saveChanges(event) {
+        applyStagedChanges(); // Aplica as últimas alterações da aba atual
+        
+        localStorage.setItem('daoshiConfig', JSON.stringify(config));
+        localStorage.setItem('daoshiSupplierPrices', JSON.stringify(supplierPrices));
+        localStorage.setItem('daoshiInfoData', JSON.stringify(infoData));
+        
+        initializeUIFromConfig();
+        buildInfoTab();
+        updateAllCalculations();
+        
+        generateAndDownloadFile();
+
+        toggleEditMode(); // Fecha o painel de edição
+        showTooltip('Alterações salvas e arquivo gerado!', event);
+        playSound('success');
+    }
+
+    function generateAndDownloadFile() {
+        const clonedDoc = document.cloneNode(true);
+        
+        // --- INÍCIO DA MODIFICAÇÃO (Resetar o estado do arquivo salvo) ---
+        resetClonedDocumentToDefault(clonedDoc);
+        // --- FIM DA MODIFICAÇÃO ---
+
+        const panelInClone = clonedDoc.getElementById('editPanel');
+        if (panelInClone) {
+            panelInClone.classList.remove('active');
+        }
+
+        let htmlContent = clonedDoc.documentElement.outerHTML;
+
+        const formatObjectForScript = (objName, obj) => `const ${objName} = ${JSON.stringify(obj, null, 4)};`;
+
+        htmlContent = htmlContent.replace(/const DEFAULT_CONFIG = {[\s\S]*?};/, formatObjectForScript('DEFAULT_CONFIG', config));
+        htmlContent = htmlContent.replace(/const DEFAULT_SUPPLIER_PRICES = {[\s\S]*?};/, formatObjectForScript('DEFAULT_SUPPLIER_PRICES', supplierPrices));
+        htmlContent = htmlContent.replace(/const DEFAULT_INFO_DATA = {[\s\S]*?};/, formatObjectForScript('DEFAULT_INFO_DATA', infoData));
+
+        const blob = new Blob([htmlContent], { type: 'text/html' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'index.html';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(link.href);
+    }
+    
+    // --- FUNÇÃO NOVA ADICIONADA (Reseta o estado do arquivo salvo) ---
+    function resetClonedDocumentToDefault(clonedDoc) {
+        // 1. Reseta as Abas (Tabs) para "Gold"
+        const tabButtons = clonedDoc.querySelectorAll('.tab-button');
+        const tabPanes = clonedDoc.querySelectorAll('.tab-pane');
+        
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabPanes.forEach(pane => pane.classList.remove('active'));
+
+        const goldButton = clonedDoc.querySelector('.tab-button[onclick="showTab(\'gold\')"]');
+        if (goldButton) goldButton.classList.add('active');
+        
+        const goldTab = clonedDoc.getElementById('goldTab');
+        if (goldTab) goldTab.classList.add('active');
+
+        // 2. Fecha o <details> de "Ver taxas e conversão"
+        const detailsToggle = clonedDoc.querySelector('#goldTab .details-toggle');
+        if (detailsToggle) {
+            detailsToggle.removeAttribute('open');
+        }
+
+        // 3. Reseta os inputs da Aba Gold
+        const goldInput = clonedDoc.getElementById('quantidadeOuro');
+        if (goldInput) goldInput.setAttribute('value', '0');
+        
+        const serverInput = clonedDoc.getElementById('servidor');
+        if (serverInput) serverInput.setAttribute('value', ''); // Limpa para mostrar o placeholder
+
+        const realInput = clonedDoc.getElementById('inputReal');
+        if (realInput) realInput.setAttribute('value', '0');
+
+        const dollarInput = clonedDoc.getElementById('inputDollar');
+        if (dollarInput) dollarInput.setAttribute('value', '0');
+
+        // 4. Reseta os inputs da Aba Packs
+        const packInputs = clonedDoc.querySelectorAll('#packsTab .pacote-section input[type="number"]');
+        packInputs.forEach(input => {
+            input.setAttribute('value', '0');
+        });
+    }
+    // --- FIM DA FUNÇÃO NOVA ---
+
+    function htmlToPlainText(html) {
+        let tempDiv = document.createElement("div");
+        html = html.replace(/<hr[^>]*>/g, "\n---\n")
+                   .replace(/<br[^>]*>/g, "\n")
+                   .replace(/<\/p>/g, "\n")
+                   .replace(/<\/li>/g, "\n")
+                   .replace(/<\/ul>/g, "\n")
+                   .replace(/<\/h3>/g, "\n");
+        tempDiv.innerHTML = html;
+        return (tempDiv.textContent || tempDiv.innerText || "").trim();
+    }
+
+    function plainTextToHtml(text) {
+        let inList = false;
+        let html = text
+            .trim()
+            .split('\n')
+            .map(line => {
+                line = line.trim();
+                let wasInList = inList;
+                
+                if (line === '---') {
+                    inList = false;
+                    return (wasInList ? '</ul>\n' : '') + '<hr style="border-color: var(--panel-border); margin: 15px 0;">';
+                }
+                
+                let h3Match = line.match(/^<h3>(.*?)<\/h3>$/i);
+                if(h3Match) {
+                    inList = false;
+                    return (wasInList ? '</ul>\n' : '') + `<h3><i class="fas fa-info-circle"></i> ${h3Match[1]}</h3>`;
+                }
+                
+                let strongMatch = line.match(/^<strong>(.*?)<\/strong>$/i);
+                if(strongMatch) {
+                    inList = false;
+                    return (wasInList ? '</ul>\n' : '') + `<p><strong>${strongMatch[1]}</strong></p>`;
+                }
+
+                if (line.startsWith('* ') || line.startsWith('- ')) {
+                    let item = `<li>${line.substring(2)}</li>`;
+                    if (!wasInList) {
+                        inList = true;
+                        return '<ul>\n' + item;
+                    }
+                    return item;
+                }
+
+                if (line) {
+                    let result = (wasInList ? '</ul>\n' : '') + `<p>${line}</p>`;
+                    inList = false;
+                    return result;
+                }
+
+                return '';
+            })
+            .join('\n');
+        
+        if (inList) {
+            html += '\n</ul>';
+        }
+        return html;
+    }
+</script>
+
+</body></html>
