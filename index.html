@@ -491,7 +491,7 @@
             .pacote-section { grid-template-columns: 1fr 1fr; }
         }
     </style>
-<style type="text/css" id="operaUserStyle"></style></head>
+</head>
 <body>
 
     <div class="container">
@@ -500,7 +500,7 @@
             <p>Calculadora de Gold &amp; Packs</p>
             <div class="cotacao-display">
                 <span class="icon">💱</span>
-                <span id="cotacao">Cotação USDT/BRL: <span class="value">R$5.34</span></span>
+                <span id="cotacao">Cotação USDT/BRL: <span class="value">R$5.35</span></span>
             </div>
         </header>
 
@@ -614,32 +614,30 @@
                     <div id="infoTab" class="tab-pane">
                          <div class="panel">
                              <h3><i class="fas fa-users"></i> Vendedores de Gold</h3>
-                             <div id="vendedores-list" class="vendedores-grid"><div class="vendedor-item"><p><strong>Nome:</strong> THOR</p><p><strong>Servidor:</strong> SA</p></div></div>
+                             <div id="vendedores-list" class="vendedores-grid"><div class="vendedor-item"><p><strong>Nome:</strong> THOR</p><p><strong>Servidor:</strong> SA</p></div><div class="vendedor-item"><p><strong>Nome:</strong> Bossatan</p><p><strong>Servidor:</strong> SA</p></div><div class="vendedor-item"><p><strong>Nome:</strong> Pinheiro</p><p><strong>Servidor:</strong> NA</p></div></div>
                             
                              <div id="info-content" class="info-content-container"><p>Não se esqueça de verificar onde será mais barato enviar o pedido para cada fornecedor</p>
-<p>=================================</p>
+
 
 <p>NC o Sombra é mais barato, mas tanto faz enviar para Dog ou Daodao,</p>
-<p>=================================</p>
+
 
 <p>ROM dog é mais barato, mas tanto faz enviar no Daodao</p>
-<p>=================================</p>
 
 
 <p>TWD basta pedir o link para a pessoa (após o processo todo do pagamento) e enviar no Smol. Caso Smol não responda, SPAME ligação tanto no grupo, quanto no privado dele. Somente assim ele acordará para fazer. Ele PERMITE fazer isso. FAÇA isso!</p>
-<p>=================================</p>
+
 
 
 
 <p>Não se esqueça de ter o g-mail da loja aberto em seu navegador para verificar os comprovantes de pagamentos!</p>
-<p>=================================</p>
 
-<p>GMAIL p verificar pagamento</p>
+
+
 <p>daoshicashstore@gmail.com</p>
 
 <p>Gabriel123@</p>
 
-<p>=================================</p>
 
 
 <hr style="border-color: var(--panel-border); margin: 15px 0;">
@@ -649,7 +647,7 @@
 <p>Compra de Gold</p>
 
 
-<p>Compramos gold por: 22,50 reais // 4.20$</p>
+<p>Compramos gold por: 21,50 reais ou 4,05$ usdt</p>
 
 
 
@@ -778,6 +776,14 @@
         <div id="editContent"><h3>Vendedores</h3><div id="vendorsEdit"><div class="vendor-edit">
             <input type="text" placeholder="Nome" value="THOR">
             <input type="text" placeholder="Servidor" value="SA">
+            <button class="btn-remove" onclick="this.parentElement.remove()">X</button>
+        </div><div class="vendor-edit">
+            <input type="text" placeholder="Nome" value="Bossatan">
+            <input type="text" placeholder="Servidor" value="SA">
+            <button class="btn-remove" onclick="this.parentElement.remove()">X</button>
+        </div><div class="vendor-edit">
+            <input type="text" placeholder="Nome" value="Pinheiro">
+            <input type="text" placeholder="Servidor" value="NA">
             <button class="btn-remove" onclick="this.parentElement.remove()">X</button>
         </div></div><button class="btn" onclick="addVendorEdit(-1, '', '')">Adicionar Vendedor</button><br><br><h3>Informações Gerais (Texto Simples)</h3><textarea id="editInfoGerais" rows="15" style="width: 100%;">Não se esqueça de verificar onde será mais barato enviar o pedido para cada fornecedor
 
@@ -927,8 +933,8 @@ Server:</textarea></div>
         "5": 4,
         "10": 7.5,
         "30": 21.6,
-        "50": 39,
-        "100": 71,
+        "50": 37,
+        "100": 71.51,
         "10-passes": 7.3
     }
 };
@@ -938,9 +944,17 @@ Server:</textarea></div>
         {
             "nome": "THOR",
             "servidor": "SA"
+        },
+        {
+            "nome": "Bossatan",
+            "servidor": "SA"
+        },
+        {
+            "nome": "Pinheiro",
+            "servidor": "NA"
         }
     ],
-    "informacoesGerais": "<p>Não se esqueça de verificar onde será mais barato enviar o pedido para cada fornecedor</p>\n<p>=================================</p>\n\n<p>NC o Sombra é mais barato, mas tanto faz enviar para Dog ou Daodao,</p>\n<p>=================================</p>\n\n<p>ROM dog é mais barato, mas tanto faz enviar no Daodao</p>\n<p>=================================</p>\n\n\n<p>TWD basta pedir o link para a pessoa (após o processo todo do pagamento) e enviar no Smol. Caso Smol não responda, SPAME ligação tanto no grupo, quanto no privado dele. Somente assim ele acordará para fazer. Ele PERMITE fazer isso. FAÇA isso!</p>\n<p>=================================</p>\n\n\n\n<p>Não se esqueça de ter o g-mail da loja aberto em seu navegador para verificar os comprovantes de pagamentos!</p>\n<p>=================================</p>\n\n<p>GMAIL p verificar pagamento</p>\n<p>daoshicashstore@gmail.com</p>\n\n<p>Gabriel123@</p>\n\n<p>=================================</p>\n\n\n<hr style=\"border-color: var(--panel-border); margin: 15px 0;\">\n\n\n\n<p>Compra de Gold</p>\n\n\n<p>Compramos gold por: 22,50 reais // 4.20$</p>\n\n\n\n<hr style=\"border-color: var(--panel-border); margin: 15px 0;\">\n\n\n\n<p>Como funciona o Intermédio?</p>\n\n\n\n<p>Eu seguro o dinheiro, auxilio na mudança dos dados/transferência e libero o dinheiro quando tudo estiver ok.</p>\n\n\n<p>G-mail: Dinheiro liberado após 7 dias</p>\n\n<p>NFT: Dinheiro liberado na hora.</p>\n\n\n\n<p>Valores</p>\n\n<p>4% para Wallet</p>\n\n<p>8% para Gmail</p>\n\n<p>Valor mínimo da transação: 35 reais</p>\n\n\n\n\n<hr style=\"border-color: var(--panel-border); margin: 15px 0;\">\n\n<p>WEMIX PLAY DA LOJA, sempre que um cliente quiser pouca quantidade, acesse a wallet e envie, eu tentarei deixar ela todo dia com umas 200 wemix</p>\n\n\n<p>Chave privada: 0x052df516290642ec712900c654f120125d046c566e2013faa0b23238a655592d</p>\n\n\n<p>E-mail:</p>\n\n<p>Daoshistorewemix@gmail.com</p>\n\n<p>Nami@147</p>\n\n\n<p>Senha da wemix play Nami@147</p>\n\n\n\n<hr style=\"border-color: var(--panel-border); margin: 15px 0;\">\n\n\n<p>Login:</p>\n\n<p>Password:</p>\n\n<p>Nickname:</p>\n\n<p>Server:</p>"
+    "informacoesGerais": "<p>Não se esqueça de verificar onde será mais barato enviar o pedido para cada fornecedor</p>\n\n\n<p>NC o Sombra é mais barato, mas tanto faz enviar para Dog ou Daodao,</p>\n\n\n<p>ROM dog é mais barato, mas tanto faz enviar no Daodao</p>\n\n\n<p>TWD basta pedir o link para a pessoa (após o processo todo do pagamento) e enviar no Smol. Caso Smol não responda, SPAME ligação tanto no grupo, quanto no privado dele. Somente assim ele acordará para fazer. Ele PERMITE fazer isso. FAÇA isso!</p>\n\n\n\n\n<p>Não se esqueça de ter o g-mail da loja aberto em seu navegador para verificar os comprovantes de pagamentos!</p>\n\n\n\n<p>daoshicashstore@gmail.com</p>\n\n<p>Gabriel123@</p>\n\n\n\n<hr style=\"border-color: var(--panel-border); margin: 15px 0;\">\n\n\n\n<p>Compra de Gold</p>\n\n\n<p>Compramos gold por: 21,50 reais ou 4,05$ usdt</p>\n\n\n\n<hr style=\"border-color: var(--panel-border); margin: 15px 0;\">\n\n\n\n<p>Como funciona o Intermédio?</p>\n\n\n\n<p>Eu seguro o dinheiro, auxilio na mudança dos dados/transferência e libero o dinheiro quando tudo estiver ok.</p>\n\n\n<p>G-mail: Dinheiro liberado após 7 dias</p>\n\n<p>NFT: Dinheiro liberado na hora.</p>\n\n\n\n<p>Valores</p>\n\n<p>4% para Wallet</p>\n\n<p>8% para Gmail</p>\n\n<p>Valor mínimo da transação: 35 reais</p>\n\n\n\n\n<hr style=\"border-color: var(--panel-border); margin: 15px 0;\">\n\n<p>WEMIX PLAY DA LOJA, sempre que um cliente quiser pouca quantidade, acesse a wallet e envie, eu tentarei deixar ela todo dia com umas 200 wemix</p>\n\n\n<p>Chave privada: 0x052df516290642ec712900c654f120125d046c566e2013faa0b23238a655592d</p>\n\n\n<p>E-mail:</p>\n\n<p>Daoshistorewemix@gmail.com</p>\n\n<p>Nami@147</p>\n\n\n<p>Senha da wemix play Nami@147</p>\n\n\n\n<hr style=\"border-color: var(--panel-border); margin: 15px 0;\">\n\n\n<p>Login:</p>\n\n<p>Password:</p>\n\n<p>Nickname:</p>\n\n<p>Server:</p>"
 };
 
     let config = JSON.parse(localStorage.getItem('daoshiConfig')) || JSON.parse(JSON.stringify(DEFAULT_CONFIG));
@@ -1696,7 +1710,5 @@ Server:</textarea></div>
         return html;
     }
 </script>
-
-
 
 </body></html>
