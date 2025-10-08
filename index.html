@@ -491,7 +491,7 @@
             .pacote-section { grid-template-columns: 1fr 1fr; }
         }
     </style>
-</head>
+<style type="text/css" id="operaUserStyle"></style></head>
 <body>
 
     <div class="container">
@@ -614,63 +614,93 @@
                     <div id="infoTab" class="tab-pane">
                          <div class="panel">
                              <h3><i class="fas fa-users"></i> Vendedores de Gold</h3>
-                             <div id="vendedores-list" class="vendedores-grid"><div class="vendedor-item"><p><strong>Nome:</strong> THOR</p><p><strong>Servidor:</strong> SA</p></div><div class="vendedor-item"><p><strong>Nome:</strong> DW</p><p><strong>Servidor:</strong> TODOS (MAIS BARATO)</p></div><div class="vendedor-item"><p><strong>Nome:</strong> LBW </p><p><strong>Servidor:</strong> TODOS</p></div><div class="vendedor-item"><p><strong>Nome:</strong> VACA</p><p><strong>Servidor:</strong> TODOS (MUITO CARO)</p></div></div>
+                             <div id="vendedores-list" class="vendedores-grid"><div class="vendedor-item"><p><strong>Nome:</strong> THOR</p><p><strong>Servidor:</strong> SA</p></div><div class="vendedor-item"><p><strong>Nome:</strong> DW</p><p><strong>Servidor:</strong> Todos (mais barato)</p></div><div class="vendedor-item"><p><strong>Nome:</strong> LBW </p><p><strong>Servidor:</strong> Todos (medio)</p></div><div class="vendedor-item"><p><strong>Nome:</strong> Vaca</p><p><strong>Servidor:</strong> (mais caro)</p></div></div>
                             
                              <div id="info-content" class="info-content-container"><p>Compramos gold por: 20 reais ou 3,,76 USDT</p>
 
+
 <p>---------------------------</p>
 
+
 <p>Não se esqueça de verificar onde será mais barato enviar o pedido para cada fornecedor</p>
+
 <p>===========</p>
+
 
 <p>ORDEM DE FORNECEDORES BARATOS</p>
 
+
 <p>MIR4</p>
+
 <p>Dog - Daodao</p>
 
+
 <p>NC</p>
+
 <p>Gofeng - Dog - Daodao - Sombra</p>
+
 
 <p>ROM/ROHAN/ODIN</p>
 
+
 <p>Gofeng - Dog - Daodao</p>
 
+
 <p>=================</p>
+
 
 
 <p>Não se esqueça de ter o g-mail da loja aberto em seu navegador para verificar os comprovantes de pagamentos!</p>
 
 
+
 <p>daoshicashstore@gmail.com</p>
 
+
 <p>Gabriel123@</p>
+
+
 
 
 <hr style="border-color: var(--panel-border); margin: 15px 0;">
 
 
+
 <p>🌟 **Intermédio - Preço e Informações** 🌟</p>
 
-<p>**Opções de Intermédio:**</p>
-<ul>
-<li>**GMAIL:** 8% (Pagamento mínimo: R$35) – dinheiro liberado em 7 dias</li>
-<li>**NFT:** 4% (Pagamento mínimo: R$35) – dinheiro liberado após desembalar</li>
 
-</ul>
+<p>**Opções de Intermédio:**</p>
+
+
+<p>**GMAIL:** 8% (Pagamento mínimo: R$35) – dinheiro liberado em 7 dias</p>
+
+<p>**NFT:** 4% (Pagamento mínimo: R$35) – dinheiro liberado após desembalar</p>
+
+
+
+
 <p>Para agilizar, por favor, informe:</p>
+
 <p>1️⃣ Seu intermédio é **NFT** ou **GMAIL**?</p>
+
 <p>2️⃣ Qual o **valor total** da transação?</p>
+
 <p>3️⃣ Quem são os **envolvidos**?</p>
+
 
 <p>💡 **Obs:** Crie um ticket e mencione todos os envolvidos (ou um grupo, também serve!).</p>
 
 
 
+
+
 <hr style="border-color: var(--panel-border); margin: 15px 0;">
 
 
 
+
 <p>WEMIX PLAY DA LOJA, sempre que um cliente quiser pouca quantidade, acesse a wallet e envie, eu tentarei deixar ela todo dia com umas 200 wemix</p>
+
 
 
 
@@ -679,11 +709,15 @@
 
 
 
+
 <p>E-mail:</p>
+
 
 <p>Daoshistorewemix@gmail.com</p>
 
+
 <p>Nami@147</p>
+
 
 
 <p>Senha da wemix play Nami@147</p>
@@ -694,7 +728,10 @@
 
 
 
+
+
 <hr style="border-color: var(--panel-border); margin: 15px 0;">
+
 
 
 
@@ -703,11 +740,14 @@
 
 
 
+
 <p>Password:</p>
 
 
 
+
 <p>Nickname:</p>
+
 
 
 
@@ -776,172 +816,8 @@
     <div class="volume-slider" id="volumeSlider"><span class="volume-label">Volume:</span><input type="range" min="0" max="100" value="70" id="volumeRange"></div>
 
     <div id="editPanel" class="">
-        <div class="edit-header" id="editHeader">Editar Informações</div>
-        <div id="editContent"><h3>Vendedores</h3><div id="vendorsEdit"><div class="vendor-edit">
-            <input type="text" placeholder="Nome" value="THOR">
-            <input type="text" placeholder="Servidor" value="SA">
-            <button class="btn-remove" onclick="this.parentElement.remove()">X</button>
-        </div><div class="vendor-edit">
-            <input type="text" placeholder="Nome" value="">
-            <input type="text" placeholder="Servidor" value="">
-            <button class="btn-remove" onclick="this.parentElement.remove()">X</button>
-        </div><div class="vendor-edit">
-            <input type="text" placeholder="Nome" value="">
-            <input type="text" placeholder="Servidor" value="">
-            <button class="btn-remove" onclick="this.parentElement.remove()">X</button>
-        </div><div class="vendor-edit">
-            <input type="text" placeholder="Nome" value="">
-            <input type="text" placeholder="Servidor" value="">
-            <button class="btn-remove" onclick="this.parentElement.remove()">X</button>
-        </div></div><button class="btn" onclick="addVendorEdit(-1, '', '')">Adicionar Vendedor</button><br><br><h3>Informações Gerais (Texto Simples)</h3><textarea id="editInfoGerais" rows="15" style="width: 100%;">Compra de Gold
-
-
-
-
-Compramos gold por: 20,80 reais ou 3,90$ usdt
-
-
-
----------------------------
-
-
-Não se esqueça de verificar onde será mais barato enviar o pedido para cada fornecedor
-
-
-
-NC: GOFENG é o mais barato, depois é o SOMBRA, depois Dog/Daodao tem mesmo preço
-
-
-
-ROM dog é mais barato, mas tanto faz enviar no Daodao
-
-
-
-
-TWD basta pedir o link para a pessoa (após o processo todo do pagamento) e enviar no Smol. Caso Smol não responda, SPAME ligação tanto no grupo, quanto no privado dele. Somente assim ele acordará para fazer. Ele PERMITE fazer isso. FAÇA isso!
-
-
-
-
-
-
-Não se esqueça de ter o g-mail da loja aberto em seu navegador para verificar os comprovantes de pagamentos!
-
-
-
-
-
-daoshicashstore@gmail.com
-
-
-
-Gabriel123@
-
-
-
-
-
----
-
-
-
-
-
-Como funciona o Intermédio?
-
-
-
-
-
-Eu seguro o dinheiro, auxilio na mudança dos dados/transferência e libero o dinheiro quando tudo estiver ok.
-
-
-
-
-G-mail: Dinheiro liberado após 7 dias
-
-
-
-NFT: Dinheiro liberado na hora.
-
-
-
-
-
-Valores
-
-
-
-4% para Wallet
-
-
-
-8% para Gmail
-
-
-
-Valor mínimo da transação: 35 reais
-
-
-
-
-
-
-
-
----
-
-
-
-WEMIX PLAY DA LOJA, sempre que um cliente quiser pouca quantidade, acesse a wallet e envie, eu tentarei deixar ela todo dia com umas 200 wemix
-
-
-
-
-Chave privada: 0x052df516290642ec712900c654f120125d046c566e2013faa0b23238a655592d
-
-
-
-
-E-mail:
-
-
-
-Daoshistorewemix@gmail.com
-
-
-
-Nami@147
-
-
-
-
-Senha da wemix play Nami@147
-
-
-
-
-
-
-
----
-
-
-
-
-Login:
-
-
-
-Password:
-
-
-
-Nickname:
-
-
-
-Server:</textarea></div>
+        <div class="edit-header" id="editHeader">Editar Preços de Packs</div>
+        <div id="editContent"><h3>Preços de Venda (Base)</h3><div class="form-group"><label>$1</label><input type="number" step="0.01" id="editBase_1" value="0.9"></div><div class="form-group"><label>$3</label><input type="number" step="0.01" id="editBase_3" value="2.65"></div><div class="form-group"><label>$5</label><input type="number" step="0.01" id="editBase_5" value="4.25"></div><div class="form-group"><label>$10 Packs</label><input type="number" step="0.01" id="editBase_10" value="7.65"></div><div class="form-group"><label>$30</label><input type="number" step="0.01" id="editBase_30" value="22.85"></div><div class="form-group"><label>$50</label><input type="number" step="0.01" id="editBase_50" value="40.55"></div><div class="form-group"><label>$100</label><input type="number" step="0.01" id="editBase_100" value="76.05"></div><div class="form-group"><label>$10 Passes</label><input type="number" step="0.01" id="editBase_10-passes" value="7.65"></div><h3>Preços de Custo (Fornecedores)</h3><h4>Sombra</h4><div class="form-group"><label>$1</label><input type="number" step="0.01" id="editSupp_Sombra_1" value="0.72"></div><div class="form-group"><label>$3</label><input type="number" step="0.01" id="editSupp_Sombra_3" value="2.17"></div><div class="form-group"><label>$5</label><input type="number" step="0.01" id="editSupp_Sombra_5" value="3.62"></div><div class="form-group"><label>$10</label><input type="number" step="0.01" id="editSupp_Sombra_10" value="7.2"></div><div class="form-group"><label>$30</label><input type="number" step="0.01" id="editSupp_Sombra_30" value="21.7"></div><div class="form-group"><label>$50</label><input type="number" step="0.01" id="editSupp_Sombra_50" value="38.5"></div><div class="form-group"><label>$100</label><input type="number" step="0.01" id="editSupp_Sombra_100" value="71.5"></div><h4>Daodao</h4><div class="form-group"><label>$1</label><input type="number" step="0.01" id="editSupp_Daodao_1" value="0.72"></div><div class="form-group"><label>$3</label><input type="number" step="0.01" id="editSupp_Daodao_3" value="2.16"></div><div class="form-group"><label>$5</label><input type="number" step="0.01" id="editSupp_Daodao_5" value="3.6"></div><div class="form-group"><label>$10</label><input type="number" step="0.01" id="editSupp_Daodao_10" value="7.2"></div><div class="form-group"><label>$30</label><input type="number" step="0.01" id="editSupp_Daodao_30" value="21.6"></div><div class="form-group"><label>$50</label><input type="number" step="0.01" id="editSupp_Daodao_50" value="39"></div><div class="form-group"><label>$100</label><input type="number" step="0.01" id="editSupp_Daodao_100" value="72"></div><h4>Dog</h4><div class="form-group"><label>$1</label><input type="number" step="0.01" id="editSupp_Dog_1" value="0.9"></div><div class="form-group"><label>$3</label><input type="number" step="0.01" id="editSupp_Dog_3" value="2.5"></div><div class="form-group"><label>$5</label><input type="number" step="0.01" id="editSupp_Dog_5" value="4"></div><div class="form-group"><label>$10</label><input type="number" step="0.01" id="editSupp_Dog_10" value="7.2"></div><div class="form-group"><label>$30</label><input type="number" step="0.01" id="editSupp_Dog_30" value="21.5"></div><div class="form-group"><label>$50</label><input type="number" step="0.01" id="editSupp_Dog_50" value="37"></div><div class="form-group"><label>$100</label><input type="number" step="0.01" id="editSupp_Dog_100" value="71"></div><div class="form-group"><label>$10 Passes</label><input type="number" step="0.01" id="editSupp_Dog_10-passes" value="7.2"></div></div>
         <div class="edit-footer">
             <button id="saveBtn" class="btn" onclick="saveChanges(event)">Salvar e Baixar</button>
         </div>
@@ -975,18 +851,18 @@ Server:</textarea></div>
 
     const DEFAULT_SUPPLIER_PRICES = {
     "Sombra": {
-        "1": 0.725,
+        "1": 0.72,
         "3": 2.17,
         "5": 3.62,
-        "10": 7.25,
-        "30": 21.75,
+        "10": 7.2,
+        "30": 21.7,
         "50": 38.5,
-        "100": 72.5
+        "100": 71.5
     },
     "Daodao": {
-        "1": 0.73,
-        "3": 2.19,
-        "5": 4,
+        "1": 0.72,
+        "3": 2.16,
+        "5": 3.6,
         "10": 7.2,
         "30": 21.6,
         "50": 39,
@@ -999,7 +875,7 @@ Server:</textarea></div>
         "10": 7.2,
         "30": 21.5,
         "50": 37,
-        "100": 71.5,
+        "100": 71,
         "10-passes": 7.2
     }
 };
@@ -1012,18 +888,18 @@ Server:</textarea></div>
         },
         {
             "nome": "DW",
-            "servidor": "TODOS (MAIS BARATO)"
+            "servidor": "Todos (mais barato)"
         },
         {
             "nome": "LBW ",
-            "servidor": "TODOS"
+            "servidor": "Todos (medio)"
         },
         {
-            "nome": "VACA",
-            "servidor": "TODOS (MUITO CARO)"
+            "nome": "Vaca",
+            "servidor": "(mais caro)"
         }
     ],
-    "informacoesGerais": "<p>Compramos gold por: 20 reais ou 3,,76 USDT</p>\n\n<p>---------------------------</p>\n\n<p>Não se esqueça de verificar onde será mais barato enviar o pedido para cada fornecedor</p>\n<p>===========</p>\n\n<p>ORDEM DE FORNECEDORES BARATOS</p>\n\n<p>MIR4</p>\n<p>Dog - Daodao</p>\n\n<p>NC</p>\n<p>Gofeng - Dog - Daodao - Sombra</p>\n\n<p>ROM/ROHAN/ODIN</p>\n\n<p>Gofeng - Dog - Daodao</p>\n\n<p>=================</p>\n\n\n<p>Não se esqueça de ter o g-mail da loja aberto em seu navegador para verificar os comprovantes de pagamentos!</p>\n\n\n<p>daoshicashstore@gmail.com</p>\n\n<p>Gabriel123@</p>\n\n\n<hr style=\"border-color: var(--panel-border); margin: 15px 0;\">\n\n\n<p>🌟 **Intermédio - Preço e Informações** 🌟</p>\n\n<p>**Opções de Intermédio:**</p>\n<ul>\n<li>**GMAIL:** 8% (Pagamento mínimo: R$35) – dinheiro liberado em 7 dias</li>\n<li>**NFT:** 4% (Pagamento mínimo: R$35) – dinheiro liberado após desembalar</li>\n\n</ul>\n<p>Para agilizar, por favor, informe:</p>\n<p>1️⃣ Seu intermédio é **NFT** ou **GMAIL**?</p>\n<p>2️⃣ Qual o **valor total** da transação?</p>\n<p>3️⃣ Quem são os **envolvidos**?</p>\n\n<p>💡 **Obs:** Crie um ticket e mencione todos os envolvidos (ou um grupo, também serve!).</p>\n\n\n\n<hr style=\"border-color: var(--panel-border); margin: 15px 0;\">\n\n\n\n<p>WEMIX PLAY DA LOJA, sempre que um cliente quiser pouca quantidade, acesse a wallet e envie, eu tentarei deixar ela todo dia com umas 200 wemix</p>\n\n\n\n<p>Chave privada: 0x052df516290642ec712900c654f120125d046c566e2013faa0b23238a655592d</p>\n\n\n\n\n<p>E-mail:</p>\n\n<p>Daoshistorewemix@gmail.com</p>\n\n<p>Nami@147</p>\n\n\n<p>Senha da wemix play Nami@147</p>\n\n\n\n\n\n\n\n<hr style=\"border-color: var(--panel-border); margin: 15px 0;\">\n\n\n\n\n<p>Login:</p>\n\n\n\n<p>Password:</p>\n\n\n\n<p>Nickname:</p>\n\n\n\n<p>Server:</p>"
+    "informacoesGerais": "<p>Compramos gold por: 20 reais ou 3,,76 USDT</p>\n\n\n<p>---------------------------</p>\n\n\n<p>Não se esqueça de verificar onde será mais barato enviar o pedido para cada fornecedor</p>\n\n<p>===========</p>\n\n\n<p>ORDEM DE FORNECEDORES BARATOS</p>\n\n\n<p>MIR4</p>\n\n<p>Dog - Daodao</p>\n\n\n<p>NC</p>\n\n<p>Gofeng - Dog - Daodao - Sombra</p>\n\n\n<p>ROM/ROHAN/ODIN</p>\n\n\n<p>Gofeng - Dog - Daodao</p>\n\n\n<p>=================</p>\n\n\n\n<p>Não se esqueça de ter o g-mail da loja aberto em seu navegador para verificar os comprovantes de pagamentos!</p>\n\n\n\n<p>daoshicashstore@gmail.com</p>\n\n\n<p>Gabriel123@</p>\n\n\n\n\n<hr style=\"border-color: var(--panel-border); margin: 15px 0;\">\n\n\n\n<p>🌟 **Intermédio - Preço e Informações** 🌟</p>\n\n\n<p>**Opções de Intermédio:**</p>\n\n\n<p>**GMAIL:** 8% (Pagamento mínimo: R$35) – dinheiro liberado em 7 dias</p>\n\n<p>**NFT:** 4% (Pagamento mínimo: R$35) – dinheiro liberado após desembalar</p>\n\n\n\n\n<p>Para agilizar, por favor, informe:</p>\n\n<p>1️⃣ Seu intermédio é **NFT** ou **GMAIL**?</p>\n\n<p>2️⃣ Qual o **valor total** da transação?</p>\n\n<p>3️⃣ Quem são os **envolvidos**?</p>\n\n\n<p>💡 **Obs:** Crie um ticket e mencione todos os envolvidos (ou um grupo, também serve!).</p>\n\n\n\n\n\n<hr style=\"border-color: var(--panel-border); margin: 15px 0;\">\n\n\n\n\n<p>WEMIX PLAY DA LOJA, sempre que um cliente quiser pouca quantidade, acesse a wallet e envie, eu tentarei deixar ela todo dia com umas 200 wemix</p>\n\n\n\n\n<p>Chave privada: 0x052df516290642ec712900c654f120125d046c566e2013faa0b23238a655592d</p>\n\n\n\n\n\n<p>E-mail:</p>\n\n\n<p>Daoshistorewemix@gmail.com</p>\n\n\n<p>Nami@147</p>\n\n\n\n<p>Senha da wemix play Nami@147</p>\n\n\n\n\n\n\n\n\n\n<hr style=\"border-color: var(--panel-border); margin: 15px 0;\">\n\n\n\n\n\n<p>Login:</p>\n\n\n\n\n<p>Password:</p>\n\n\n\n\n<p>Nickname:</p>\n\n\n\n\n<p>Server:</p>"
 };
 
     let config = JSON.parse(localStorage.getItem('daoshiConfig')) || JSON.parse(JSON.stringify(DEFAULT_CONFIG));
@@ -1779,5 +1655,6 @@ Server:</textarea></div>
         return html;
     }
 </script>
+
 
 </body></html>
