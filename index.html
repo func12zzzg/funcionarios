@@ -500,7 +500,7 @@
             <p>Calculadora de Gold &amp; Packs</p>
             <div class="cotacao-display">
                 <span class="icon">💱</span>
-                <span id="cotacao">Cotação USDT/BRL: <span class="value">R$5.60</span></span>
+                <span id="cotacao">Cotação USDT/BRL: <span class="value">R$5.49</span></span>
             </div>
         </header>
 
@@ -776,14 +776,8 @@
     <div class="volume-slider" id="volumeSlider"><span class="volume-label">Volume:</span><input type="range" min="0" max="100" value="70" id="volumeRange"></div>
 
     <div id="editPanel" class="">
-        <div class="edit-header" id="editHeader">Editar Taxas de Gold</div>
-        <div id="editContent">
-                <div class="form-group"><label>1k+ (R$)</label><input type="number" step="0.01" id="editBase" value="27"></div>
-                <div class="form-group"><label>5k+ (R$)</label><input type="number" step="0.01" id="editAbove5k" value="27"></div>
-                <div class="form-group"><label>10k+ (R$)</label><input type="number" step="0.01" id="editAbove10k" value="26"></div>
-                <div class="form-group"><label>20k+ (R$)</label><input type="number" step="0.01" id="editAbove20k" value="22.5"></div>
-                <div class="form-group"><label>USDT ($)</label><input type="number" step="0.01" id="editUsdt" value="4.35"></div>
-            </div>
+        <div class="edit-header" id="editHeader">Editar Preços de Packs</div>
+        <div id="editContent"><h3>Preços de Venda (Base)</h3><div class="form-group"><label>$1</label><input type="number" step="0.01" id="editBase_1" value="0.9"></div><div class="form-group"><label>$3</label><input type="number" step="0.01" id="editBase_3" value="2.65"></div><div class="form-group"><label>$5</label><input type="number" step="0.01" id="editBase_5" value="4.25"></div><div class="form-group"><label>$10 Packs</label><input type="number" step="0.01" id="editBase_10" value="7.65"></div><div class="form-group"><label>$30</label><input type="number" step="0.01" id="editBase_30" value="22.85"></div><div class="form-group"><label>$50</label><input type="number" step="0.01" id="editBase_50" value="40.55"></div><div class="form-group"><label>$100</label><input type="number" step="0.01" id="editBase_100" value="76.05"></div><div class="form-group"><label>$10 Passes</label><input type="number" step="0.01" id="editBase_10-passes" value="7.65"></div><h3>Preços de Custo (Fornecedores)</h3><h4>Sombra</h4><div class="form-group"><label>$1</label><input type="number" step="0.01" id="editSupp_Sombra_1" value="0.725"></div><div class="form-group"><label>$3</label><input type="number" step="0.01" id="editSupp_Sombra_3" value="2.17"></div><div class="form-group"><label>$5</label><input type="number" step="0.01" id="editSupp_Sombra_5" value="3.62"></div><div class="form-group"><label>$10</label><input type="number" step="0.01" id="editSupp_Sombra_10" value="7.25"></div><div class="form-group"><label>$30</label><input type="number" step="0.01" id="editSupp_Sombra_30" value="21.75"></div><div class="form-group"><label>$50</label><input type="number" step="0.01" id="editSupp_Sombra_50" value="38.5"></div><div class="form-group"><label>$100</label><input type="number" step="0.01" id="editSupp_Sombra_100" value="72.5"></div><h4>Daodao</h4><div class="form-group"><label>$1</label><input type="number" step="0.01" id="editSupp_Daodao_1" value="0.73"></div><div class="form-group"><label>$3</label><input type="number" step="0.01" id="editSupp_Daodao_3" value="2.19"></div><div class="form-group"><label>$5</label><input type="number" step="0.01" id="editSupp_Daodao_5" value="4"></div><div class="form-group"><label>$10</label><input type="number" step="0.01" id="editSupp_Daodao_10" value="7.2"></div><div class="form-group"><label>$30</label><input type="number" step="0.01" id="editSupp_Daodao_30" value="21.6"></div><div class="form-group"><label>$50</label><input type="number" step="0.01" id="editSupp_Daodao_50" value="39"></div><div class="form-group"><label>$100</label><input type="number" step="0.01" id="editSupp_Daodao_100" value="72"></div><h4>Dog</h4><div class="form-group"><label>$1</label><input type="number" step="0.01" id="editSupp_Dog_1" value="0.8"></div><div class="form-group"><label>$3</label><input type="number" step="0.01" id="editSupp_Dog_3" value="2.4"></div><div class="form-group"><label>$5</label><input type="number" step="0.01" id="editSupp_Dog_5" value="4"></div><div class="form-group"><label>$10</label><input type="number" step="0.01" id="editSupp_Dog_10" value="7.2"></div><div class="form-group"><label>$30</label><input type="number" step="0.01" id="editSupp_Dog_30" value="21.5"></div><div class="form-group"><label>$50</label><input type="number" step="0.01" id="editSupp_Dog_50" value="37"></div><div class="form-group"><label>$100</label><input type="number" step="0.01" id="editSupp_Dog_100" value="71.5"></div><div class="form-group"><label>$10 Passes</label><input type="number" step="0.01" id="editSupp_Dog_10-passes" value="7.2"></div></div>
         <div class="edit-footer">
             <button id="saveBtn" class="btn" onclick="saveChanges(event)">Salvar e Baixar</button>
         </div>
@@ -807,11 +801,11 @@
         "1": 0.9,
         "3": 2.65,
         "5": 4.25,
-        "10": 7.65,
-        "30": 22.85,
-        "50": 40.55,
-        "100": 76.05,
-        "10-passes": 7.65
+        "10": 7.6,
+        "30": 22.8,
+        "50": 40,
+        "100": 76,
+        "10-passes": 7.6
     }
 };
 
@@ -826,13 +820,13 @@
         "100": 72.5
     },
     "Daodao": {
-        "1": 0.73,
-        "3": 2.19,
-        "5": 4,
-        "10": 7.2,
-        "30": 21.6,
-        "50": 39,
-        "100": 72
+        "1": 0.715,
+        "3": 2.145,
+        "5": 3.6,
+        "10": 7.15,
+        "30": 21.45,
+        "50": 38,
+        "100": 71.5
     },
     "Dog": {
         "1": 0.8,
